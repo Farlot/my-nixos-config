@@ -96,7 +96,8 @@
     keepassxc
     goxlr-utility
     ckb-next
-    discord
+    #discord
+    vesktop
     steam
     coolercontrol.coolercontrold
     coolercontrol.coolercontrol-liqctld
