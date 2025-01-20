@@ -127,7 +127,6 @@
   virtualisation.docker = {
     enable = true;
     #package = pkgs.docker_25;
-    enableNvidia = true;
     rootless = {
       enable = true;
       setSocketVariable = true;
@@ -137,7 +136,6 @@
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.guest.enable = true;
   hardware.nvidia-container-toolkit.enable = true; # New but problematic ?
-  # virtualisation.docker.enableNvidia = true;# old but working ?
 
   systemd.services.ckb-next = lib.mkIf config.hardware.ckb-next.enable {
     serviceConfig.ExecStart = lib.mkForce "${config.hardware.ckb-next.package}/bin/ckb-next-daemon --enable-experimental ${lib.optionalString (config.hardware.ckb-next.gid != null) "--gid=${builtins.toString config.hardware.ckb-next.gid}"}";
