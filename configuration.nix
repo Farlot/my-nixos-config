@@ -97,7 +97,8 @@
     goxlr-utility
     ckb-next
     #discord
-    vesktop
+    #vesktop
+    legcord
     steam
     coolercontrol.coolercontrold
     coolercontrol.coolercontrol-liqctld
