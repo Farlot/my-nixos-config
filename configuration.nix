@@ -113,6 +113,7 @@
     nvidia-container-toolkit
     nh
     #bottles
+    firefox
     librewolf
     prismlauncher
     google-chrome
