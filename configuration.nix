@@ -93,13 +93,13 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-    neovim
     keepassxc
     goxlr-utility
     ckb-next
-    #discord
-    #vesktop
-    legcord
+    discord
+    betterdiscordctl
+    #vesktop #No keybind support, trash
+    #legcord #Has keybinds, but they dont work
     steam
     coolercontrol.coolercontrold
     coolercontrol.coolercontrol-liqctld
