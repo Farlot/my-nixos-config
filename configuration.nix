@@ -111,10 +111,12 @@
     btop
     runc
     nvidia-container-toolkit
-    nh
+    git
+    gh
+    nh # Nixos fancy rebuild tool
     #bottles
     firefox
-    librewolf
+    #librewolf
     prismlauncher
     google-chrome
   ];
