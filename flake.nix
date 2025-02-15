@@ -2,9 +2,10 @@
   description = "My NixOS configuration with ckb-next PR build";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    unstablenixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    #unstablenixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # Unstable url : "github:NixOS/nixpkgs/nixos-unstable"
+    # Stable 24.11 url : "github:NixOS/nixpkgs/nixos-24.11"
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
