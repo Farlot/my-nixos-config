@@ -119,6 +119,10 @@
     #librewolf
     prismlauncher
     google-chrome
+    flatpak
+    umu-launcher
+    obs-studio
+    ydotool
   ];
 
   programs.nix-ld.enable = true; # https://nix.dev/guides/faq#how-to-run-non-nix-executables
