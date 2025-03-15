@@ -13,8 +13,16 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+
+  boot.loader.grub = {
+    enable = true;
+    device = "nodev"; # Or specify your device, e.g., "/dev/sda"
+    efiSupport = true; # If you're using UEFI
+    #Optional configurations
+    #useOSProber = true; #To detect other OS's
+    #efiInstallAsRemovable = true; # Sometimes this helps with UEFI issues.
+  };
+  boot.loader.systemd-boot.enable = false;
 
   networking.hostName = "riggen"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
