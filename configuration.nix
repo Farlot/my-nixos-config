@@ -9,7 +9,8 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./modules/maintenance.nix
-      ./modules/avorion.nix
+      #./modules/avorion.nix
+      ./modules/soulmask.nix
       inputs.home-manager.nixosModules.home-manager
     ];
 
