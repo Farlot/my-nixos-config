@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./modules/maintenance.nix
+      ./modules/avorion.nix
       inputs.home-manager.nixosModules.home-manager
     ];
 
@@ -116,6 +117,7 @@
     protonup
     docker
     docker-compose
+    podman
     btop
     runc
     nvidia-container-toolkit
