@@ -10,7 +10,7 @@
       ./hardware-configuration.nix
       ./modules/maintenance.nix
       #./modules/avorion.nix
-      ./modules/soulmask.nix
+      #./modules/soulmask.nix
       inputs.home-manager.nixosModules.home-manager
     ];
 
@@ -134,6 +134,7 @@
     umu-launcher
     obs-studio
     ydotool
+    rust-stakeholder
   ];
 
   programs.nix-ld.enable = true; # https://nix.dev/guides/faq#how-to-run-non-nix-executables
