@@ -22,6 +22,8 @@
     pkgs.protontricks
     pkgs.mangohud
     pkgs.xivlauncher
+    pkgs.transmission_4
+    pkgs.vlc
     #pkgs.librewolf
 
   ];
