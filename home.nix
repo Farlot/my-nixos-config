@@ -24,6 +24,9 @@
     pkgs.xivlauncher
     pkgs.transmission_4
     pkgs.vlc
+    pkgs.z-lua
+    pkgs.ranger
+    pkgs.tldr
     #pkgs.librewolf
 
   ];

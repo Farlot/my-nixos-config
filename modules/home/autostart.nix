@@ -21,24 +21,24 @@
     };
   };
 
+  # Discord Autostart
+  systemd.user.services.discord = {
+    Unit = {
+      Description = "Open Discord in the background at boot";
+      After = [ "graphical-session.target" ];
+    };
 
-  # Flameshot autostart service
-#  systemd.user.services.flameshot = {
-#    Unit = {
-#      Description = "Autostart Flameshot screenshot tool";
-#      After = [ "graphical-session.target" ];
-#    };
-#
-#    Service = {
-#      ExecStart = "${pkgs.flameshot}/bin/flameshot";
-#      Restart = "on-failure";
-#      RestartSec = "5s";
-#    };
-#
-#    Install = {
-#      WantedBy = [ "default.target" ];
-#    };
-#  };
+    Service = {
+      ExecStart = "${pkgs.discord}/bin/Discord";
+      Restart = "on-failure";
+      RestartSec = "5s";
+    };
+
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
+  };
+
 
   systemd.user.startServices = true;
 }
