@@ -44,7 +44,6 @@
 
 
 
-
   # Ensure the SSH key is placed in the right location using home-manager
   # home.file.".ssh/github".source = "/path/to/your/github/key";  # Replace this with the full path to your private key
 

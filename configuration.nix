@@ -143,6 +143,13 @@
   # Add missing dynamic libraries for unpackages programs here :
   ];
 
+
+  programs.bash = {
+    shellInit = ''
+      eval "$(lua ${pkgs.z-lua}/share/z.lua/z.lua --init bash)"
+    '';
+  };
+
   programs.coolercontrol.enable = true;
   services.goxlr-utility.enable = true;
   hardware.ckb-next.enable = true;
