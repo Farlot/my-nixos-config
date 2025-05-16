@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ./modules/maintenance.nix
       ./modules/factorio.nix
+      ./modules/gameservers/abiotic.nix
       #./modules/avorion.nix
       #./modules/soulmask.nix
       inputs.home-manager.nixosModules.home-manager

@@ -22,7 +22,8 @@
     pkgs.protontricks
     pkgs.mangohud
     pkgs.xivlauncher
-    pkgs.transmission_4
+    #pkgs.transmission_4
+    pkgs.qbittorrent
     pkgs.vlc
     pkgs.z-lua
     pkgs.ranger
