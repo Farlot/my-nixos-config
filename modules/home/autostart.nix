@@ -8,6 +8,7 @@
     Unit = {
       Description = "Open Steam in the background at boot";
       After = [ "graphical-session.target" ];
+      Requires = [ "graphical-session.target" ];
     };
 
     Service = {
@@ -26,6 +27,7 @@
     Unit = {
       Description = "Open Discord in the background at boot";
       After = [ "graphical-session.target" ];
+      Requires = [ "graphical-session.target" ];
     };
 
     Service = {
