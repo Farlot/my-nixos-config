@@ -10,6 +10,7 @@
             "--update-input"
             "nixpkgs"
             "-L"
+            "--commit-lock-file"
         ];
         randomizedDelaySec = "45min";
     };
