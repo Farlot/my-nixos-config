@@ -5,10 +5,8 @@
     system.autoUpgrade = {
         enable = true;
         dates = "05:00";
-        flake = inputs.self.outPath;
+        flake = "/mnt/stuff/nixos";
         flags = [
-            "--update-input"
-            "nixpkgs"
             "-L"
             "--recreate-lock-file"
             "--commit-lock-file"
