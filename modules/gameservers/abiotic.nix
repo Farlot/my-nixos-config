@@ -15,7 +15,8 @@
       SteamServerName = "RageAura";
       UsePerfThreads = "true";
       NoAsyncLoadingThread = "true";
-      WorldSaveName = "idiots2";
+      #WorldSaveName = "idiots2";
+      WorldSaveName = "idiots3";
       AutoUpdate = "true";
       AdditionalArgs = "-SandboxIniPath=Config/WindowsServer/Server1Sandbox.ini";
     };
