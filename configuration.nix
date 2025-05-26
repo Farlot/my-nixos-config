@@ -147,12 +147,14 @@
 
   programs.git = {
     enable = true;
-    userName = "Farlot";  # Replace with your GitHub username
-    userEmail = "m.waaagan@gmail.com";  # Replace with your GitHub email
-    extraConfig = {
-    safe.directory = [ "/mnt/stuff/nixos" ];
-    #  # Ensure git uses SSH for GitHub instead of HTTPS
-    #  url."git@github.com:".insteadOf = "https://github.com/";
+    };
+
+  nixpkgs.config = {
+    programs.git.extraConfig = {
+      user.name = "Farlot";
+      user.email = "m.waaagan@gmail.com";
+      safe.directory = [ "/mnt/stuff/nixos" ];
+      url."git@github.com:".insteadOf = "https://github.com/";
     };
   };
 

@@ -32,6 +32,19 @@
 
   ];
 
+  programs.git = {
+    enable = true;
+    userName = "Farlot";  # Replace with your GitHub username
+    userEmail = "m.waaagan@gmail.com";  # Replace with your GitHub email
+    extraConfig = {
+      safe.directory = [ "/mnt/stuff/nixos" ];
+      # Ensure git uses SSH for GitHub instead of HTTPS
+      url."git@github.com:".insteadOf = "https://github.com/";
+    };
+  };
+
+
+
 
   # Ensure the SSH key is placed in the right location using home-manager
   # home.file.".ssh/github".source = "/path/to/your/github/key";  # Replace this with the full path to your private key
