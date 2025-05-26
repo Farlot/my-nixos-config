@@ -145,10 +145,15 @@
   ];
 
 
-  programs.bash = {
-    shellInit = ''
-      eval "$(lua ${pkgs.z-lua}/share/z.lua/z.lua --init bash)"
-    '';
+  programs.git = {
+    enable = true;
+    userName = "Farlot";  # Replace with your GitHub username
+    userEmail = "m.waaagan@gmail.com";  # Replace with your GitHub email
+    extraConfig = {
+    safe.directory = [ "/mnt/stuff/nixos" ];
+    #  # Ensure git uses SSH for GitHub instead of HTTPS
+    #  url."git@github.com:".insteadOf = "https://github.com/";
+    };
   };
 
   programs.coolercontrol.enable = true;
