@@ -28,6 +28,7 @@
     pkgs.z-lua
     pkgs.ranger
     pkgs.tldr
+    pkgs.itch
     #pkgs.librewolf
 
   ];
