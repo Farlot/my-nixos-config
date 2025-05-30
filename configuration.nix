@@ -6,10 +6,10 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
       ./modules/maintenance.nix
-      ./modules/factorio.nix
+      #./modules/factorio.nix
       ./modules/gameservers/abiotic.nix
       #./modules/avorion.nix
       #./modules/soulmask.nix
@@ -137,6 +137,7 @@
     obs-studio
     ydotool
     rust-stakeholder
+    rclone
   ];
 
   programs.nix-ld.enable = true; # https://nix.dev/guides/faq#how-to-run-non-nix-executables
