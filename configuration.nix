@@ -11,6 +11,7 @@
       ./modules/maintenance.nix
       #./modules/factorio.nix
       ./modules/gameservers/abiotic.nix
+      ./modules/gameservers/icarus.nix
       #./modules/avorion.nix
       #./modules/soulmask.nix
       inputs.home-manager.nixosModules.home-manager
