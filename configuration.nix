@@ -177,6 +177,7 @@
   hardware.nvidia-container-toolkit.enable = true; # New but problematic ?
 
   boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   systemd.services.ckb-next = lib.mkIf config.hardware.ckb-next.enable {
     serviceConfig.ExecStart = lib.mkForce "${config.hardware.ckb-next.package}/bin/ckb-next-daemon --enable-experimental ${lib.optionalString (config.hardware.ckb-next.gid != null) "--gid=${builtins.toString config.hardware.ckb-next.gid}"}";
