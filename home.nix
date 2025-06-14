@@ -21,6 +21,7 @@
     pkgs.spotify
     pkgs.protontricks
     pkgs.mangohud
+    pkgs.goverlay
     pkgs.xivlauncher
     #pkgs.transmission_4
     pkgs.qbittorrent

@@ -139,6 +139,7 @@
     ydotool
     rust-stakeholder
     rclone
+    #qjackctl
   ];
 
   programs.nix-ld.enable = true; # https://nix.dev/guides/faq#how-to-run-non-nix-executables
@@ -177,7 +178,7 @@
   hardware.nvidia-container-toolkit.enable = true; # New but problematic ?
 
   boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
-  # boot.kernelPackages = pkgs.linuxPackages_latest; # Commenting out the kernel change until virtualbox fixes build issue with 6.15
+  boot.kernelPackages = pkgs.linuxPackages_latest; # Commenting out the kernel change until virtualbox fixes build issue with 6.15
 
   systemd.services.ckb-next = lib.mkIf config.hardware.ckb-next.enable {
     serviceConfig.ExecStart = lib.mkForce "${config.hardware.ckb-next.package}/bin/ckb-next-daemon --enable-experimental ${lib.optionalString (config.hardware.ckb-next.gid != null) "--gid=${builtins.toString config.hardware.ckb-next.gid}"}";
