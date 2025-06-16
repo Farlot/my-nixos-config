@@ -11,7 +11,7 @@
       ./modules/maintenance.nix
       #./modules/factorio.nix
       #./modules/gameservers/abiotic.nix
-      ./modules/gameservers/icarus.nix
+      #./modules/gameservers/icarus.nix
       #./modules/avorion.nix
       #./modules/soulmask.nix
       inputs.home-manager.nixosModules.home-manager
@@ -140,6 +140,7 @@
     rust-stakeholder
     rclone
     #qjackctl
+    easyeffects
   ];
 
   programs.nix-ld.enable = true; # https://nix.dev/guides/faq#how-to-run-non-nix-executables
@@ -177,7 +178,7 @@
   virtualisation.virtualbox.guest.enable = true;
   hardware.nvidia-container-toolkit.enable = true; # New but problematic ?
 
-  boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
+  boot.kernelParams = [ "kvm.enable_virt_at_load=0" "nvidia-drm.fbdev=0" ];
   boot.kernelPackages = pkgs.linuxPackages_latest; # Commenting out the kernel change until virtualbox fixes build issue with 6.15
 
   systemd.services.ckb-next = lib.mkIf config.hardware.ckb-next.enable {
