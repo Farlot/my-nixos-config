@@ -2,7 +2,7 @@
 
 {
   virtualisation.oci-containers.containers.avorion = {
-    image = "docker.io/rfvgyhn/avorion";
+    image = "docker.io/rfvgyhn/avorion:latest";
     ports = [ "27000:27000/tcp" "27003:27003/udp" ]; # Adjust as needed
     volumes = [
       "/mnt/stuff/DockerStuff/avorion/currentsave:/home/steam/.avorion/galaxies/avorion_galaxy" # Map a local directory for persistent data
