@@ -9,7 +9,7 @@
     [
       ./hardware-configuration.nix
       ./modules/maintenance.nix
-      ./modules/gameservers/avorion.nix
+      #./modules/gameservers/avorion.nix
       #./modules/factorio.nix
       #./modules/gameservers/abiotic.nix
       #./modules/gameservers/icarus.nix
