@@ -16,13 +16,14 @@
     pkgs.flameshot
     pkgs.git
     pkgs.teams-for-linux
-    pkgs.wineWowPackages.full
+    pkgs.wineWowPackages.stagingFull
     pkgs.winetricks
     pkgs.spotify
     pkgs.protontricks
     pkgs.mangohud
     pkgs.goverlay
     pkgs.xivlauncher
+    pkgs.lutris
     #pkgs.transmission_4
     pkgs.qbittorrent
     pkgs.vlc
