@@ -31,6 +31,7 @@
     pkgs.ranger
     pkgs.tldr
     pkgs.itch
+    pkgs.rcon
     #pkgs.librewolf
 
   ];
