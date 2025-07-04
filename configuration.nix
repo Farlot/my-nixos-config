@@ -9,7 +9,8 @@
     [
       ./hardware-configuration.nix
       ./modules/maintenance.nix
-      ./modules/gameservers/empyrion.nix
+      #./modules/gameservers/empyrion.nix
+      ./modules/gameservers/foundry.nix
       #./modules/gameservers/avorion.nix
       #./modules/factorio.nix
       #./modules/gameservers/abiotic.nix
