@@ -9,13 +9,14 @@
     [
       ./hardware-configuration.nix
       ./modules/maintenance.nix
+      ./modules/gameservers
       #./modules/gameservers/empyrion.nix
       #./modules/gameservers/foundry.nix
       #./modules/gameservers/avorion.nix
-      #./modules/factorio.nix
+      #./modules/gameservers/factorio.nix
       #./modules/gameservers/abiotic.nix
       #./modules/gameservers/icarus.nix
-      #./modules/soulmask.nix
+      #./modules/gameservers/soulmask.nix
       inputs.home-manager.nixosModules.home-manager
     ];
 
