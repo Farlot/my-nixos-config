@@ -3,7 +3,7 @@
 {
   imports =
     [
-      ./empyrion.nix
+      #./empyrion.nix
       #./foundry.nix
       #./avorion.nix
       #./factorio.nix

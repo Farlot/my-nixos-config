@@ -10,18 +10,10 @@
       ./hardware-configuration.nix
       ./modules/maintenance.nix
       ./modules/gameservers
-      #./modules/gameservers/empyrion.nix
-      #./modules/gameservers/foundry.nix
-      #./modules/gameservers/avorion.nix
-      #./modules/gameservers/factorio.nix
-      #./modules/gameservers/abiotic.nix
-      #./modules/gameservers/icarus.nix
-      #./modules/gameservers/soulmask.nix
+      ./modules/arr.nix
       inputs.home-manager.nixosModules.home-manager
     ];
-
-  # Bootloader.
-
+  # Boot
   boot.loader.grub = {
     enable = true;
     device = "nodev"; # Or specify your device, e.g., "/dev/sda"
@@ -90,16 +82,15 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.maw = {
     isNormalUser = true;
-    description = "Marcus W[gan";
+    description = "Marcus";
     extraGroups = [ "networkmanager" "wheel" "docker" "vboxusers" "gamemode"];
     packages = with pkgs; [
-      kdePackages.kate
     #  thunderbird
     ];
   };
 
-  # Install firefox.
-  #programs.firefox.enable = true;
+  # Arr stack activate
+  media_server.enable = false;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -109,6 +100,7 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
+    kdePackages.kate
     keepassxc
     goxlr-utility
     ckb-next

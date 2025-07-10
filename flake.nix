@@ -30,7 +30,9 @@
           inherit inputs system;
           };
         modules = [
-          ./configuration.nix
+          #./configuration.nix
+          ./hosts
+          ./hosts/riggen.nix
           ./modules/virt.nix
           ./modules/nh.nix
           ./modules/hardware/mounts.nix
