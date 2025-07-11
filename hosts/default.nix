@@ -99,11 +99,11 @@
     btop
     nh
     sops
+    firefox
   ];
 
   services.pcscd.enable = true;
   programs.gnupg.agent = {
-    #pinentryPackage = pkgs.pinentry-gtk2;
     enable = true;
     enableSSHSupport = true;
   };

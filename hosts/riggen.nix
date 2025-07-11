@@ -7,14 +7,10 @@
 
   # Packages
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
     kdePackages.kate
     goxlr-utility
     ckb-next
     betterdiscordctl
-    #vesktop #No keybind support, trash
-    #legcord #Has keybinds, but they dont work
     coolercontrol.coolercontrold
     coolercontrol.coolercontrol-liqctld
     coolercontrol.coolercontrol-gui
@@ -24,9 +20,6 @@
     runc
     nvidia-container-toolkit
     gh
-    #bottles
-    firefox
-    #librewolf
     prismlauncher
     google-chrome
     flatpak
@@ -35,7 +28,6 @@
     ydotool
     rust-stakeholder
     rclone
-    #qjackctl
     easyeffects
   ];
 
