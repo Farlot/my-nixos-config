@@ -91,6 +91,22 @@
     };
   };
 
+  environment.systemPackages = with pkgs; [
+    keepassxc
+    discord
+    fastfetch
+    podman
+    btop
+    nh
+    sops
+  ];
+
+  services.pcscd.enable = true;
+  programs.gnupg.agent = {
+    #pinentryPackage = pkgs.pinentry-gtk2;
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   xdg.portal.enable = true;

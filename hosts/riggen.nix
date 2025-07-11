@@ -10,28 +10,20 @@
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
     kdePackages.kate
-    keepassxc
     goxlr-utility
     ckb-next
-    discord
     betterdiscordctl
     #vesktop #No keybind support, trash
     #legcord #Has keybinds, but they dont work
-    steam
     coolercontrol.coolercontrold
     coolercontrol.coolercontrol-liqctld
     coolercontrol.coolercontrol-gui
-    fastfetch
     protonup
     docker
     docker-compose
-    podman
-    btop
     runc
     nvidia-container-toolkit
-    git
     gh
-    nh # Nixos fancy rebuild tool
     #bottles
     firefox
     #librewolf
@@ -104,9 +96,9 @@
     users.maw = import ../home.nix;
   };
 
-  programs.ssh = {
+  #programs.ssh = {
     #enable = true;
-    startAgent = true;
-  };
+    #startAgent = true;
+  #};
 
 }
