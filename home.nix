@@ -9,31 +9,28 @@
   home.homeDirectory = "/home/maw";
 
 
-  home.packages = [
-    pkgs.gimp
-    pkgs.obsidian
-    pkgs.neovim
-    pkgs.flameshot
-    pkgs.git
-    pkgs.teams-for-linux
-    pkgs.wineWowPackages.stagingFull
-    pkgs.winetricks
-    pkgs.spotify
-    pkgs.protontricks
-    pkgs.mangohud
-    pkgs.goverlay
-    pkgs.xivlauncher
-    pkgs.lutris
-    #pkgs.transmission_4
-    pkgs.qbittorrent
-    pkgs.vlc
-    pkgs.z-lua
-    pkgs.ranger
-    pkgs.tldr
-    pkgs.itch
-    pkgs.rcon
-    #pkgs.librewolf
-
+  home.packages = with pkgs; [
+    gimp
+    obsidian
+    neovim
+    flameshot
+    git
+    teams-for-linux
+    wineWowPackages.stagingFull
+    winetricks
+    spotify
+    protontricks
+    mangohud
+    goverlay
+    xivlauncher
+    lutris
+    qbittorrent
+    vlc
+    z-lua
+    ranger
+    tldr
+    itch
+    rcon
   ];
 
   programs.git = {

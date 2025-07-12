@@ -15,7 +15,14 @@
     #./modules/gameservers/icarus.nix
     #./modules/gameservers/soulmask.nix
     inputs.home-manager.nixosModules.home-manager
+    inputs.sops-nix.nixosModules.sops
   ];
+
+  sops.defaultSopsFile = ./secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "/home/maw/.config/sops/age/keys.txt";
+  #sops.secrets.example-key = {};
+  #sops.secrets."myservice/my_subdir/mysecret" = {};
 
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;
@@ -29,6 +36,7 @@
   #efiInstallAsRemovable = true; # Sometimes this helps with UEFI issues.
   };
   boot.loader.systemd-boot.enable = false;
+
 
   time.timeZone = "Europe/Oslo";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -82,14 +90,18 @@
     enable = true;
     };
 
-  nixpkgs.config = {
-    programs.git.extraConfig = {
-      user.name = "Farlot";
-      user.email = "m.waaagan@gmail.com";
-      safe.directory = [ "/mnt/stuff/nixos" ];
-      url."git@github.com:".insteadOf = "https://github.com/";
-    };
-  };
+  #nixpkgs.config = {
+  #  programs.git.extraConfig = {
+  #    user.name = "Farlot";
+  #    user.email = "m.waaagan@gmail.com";
+  #    safe.directory = [ "/mnt/stuff/nixos" ];
+  #    url."git@github.com:".insteadOf = "https://github.com/";
+  #  };
+  #};
+
+  #environment.sessionVariables = {
+  #EDITOR = "kate";
+  #};
 
   environment.systemPackages = with pkgs; [
     keepassxc

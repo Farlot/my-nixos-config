@@ -3,6 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     #unstablenixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # Unstable url : "github:NixOS/nixpkgs/nixos-unstable"
     # Stable 24.11 url : "github:NixOS/nixpkgs/nixos-24.11"
@@ -13,7 +15,7 @@
     # Other inputs if needed
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, sops-nix, ... }@inputs:
     let
       system = "x86_64-linux";  # Adjust based on your architecture
       pkgs = import nixpkgs {
@@ -36,6 +38,7 @@
           ./modules/virt.nix
           ./modules/nh.nix
           ./modules/hardware/mounts.nix
+          sops-nix.nixosModules.sops
           {
             nixpkgs.overlays = [
               (final: prev: {
