@@ -33,12 +33,12 @@
           };
         modules = [
           #./configuration.nix
+          sops-nix.nixosModules.sops
           ./hosts
           ./hosts/riggen.nix
           ./modules/virt.nix
           ./modules/nh.nix
           ./modules/hardware/mounts.nix
-          sops-nix.nixosModules.sops
           {
             nixpkgs.overlays = [
               (final: prev: {

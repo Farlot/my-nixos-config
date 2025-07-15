@@ -6,7 +6,7 @@
     ../hardware-configuration.nix
     ../modules/maintenance.nix
     ../modules/gameservers
-    ../modules/arr.nix
+    #../modules/arr.nix
     #./modules/gameservers/empyrion.nix
     #./modules/gameservers/foundry.nix
     #./modules/gameservers/avorion.nix
@@ -18,14 +18,9 @@
     inputs.sops-nix.nixosModules.sops
   ];
 
-  sops.defaultSopsFile = ./secrets/secrets.yaml;
-  sops.defaultSopsFormat = "yaml";
-  sops.age.keyFile = "/home/maw/.config/sops/age/keys.txt";
-  #sops.secrets.example-key = {};
-  #sops.secrets."myservice/my_subdir/mysecret" = {};
 
   networking.networkmanager.enable = true;
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
 
   boot.loader.grub = {
   enable = true;
@@ -105,6 +100,7 @@
 
   environment.systemPackages = with pkgs; [
     keepassxc
+    element-desktop
     discord
     fastfetch
     podman
@@ -113,6 +109,15 @@
     sops
     firefox
   ];
+
+  # fetch secrets with :
+  # $(cat ${config.sops.secrets."myservice/my_subdir/my_secret".path})
+  sops.defaultSopsFile = ../secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "/home/maw/.config/sops/age/keys.txt";
+  sops.secrets.wgpub = {};
+  sops.secrets.wgpriv = {};
+  #sops.secrets."myservice/my_subdir/mysecret" = {};
 
   services.pcscd.enable = true;
   programs.gnupg.agent = {

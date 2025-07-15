@@ -5,6 +5,12 @@
   networking.hostName = "riggen";
   media_server.enable = false;
 
+  imports =[
+    ../modules/arr.nix
+    ../modules/wireguardvpn.nix
+  ];
+
+
   # Packages
   environment.systemPackages = with pkgs; [
     kdePackages.kate
