@@ -17,7 +17,7 @@
     wg-quick.interfaces.wg1 = {
       table = "vpn";
       address = [ "10.71.233.75/32" ];
-      dns = [ "10.64.0.1" ]
+      dns = [ "10.64.0.1" ];
       privateKeyFile = config.sops.secrets.wgpriv.path;
       peers = [
         {
