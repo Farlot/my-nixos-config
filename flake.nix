@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    stablenixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     #unstablenixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -15,10 +16,13 @@
     # Other inputs if needed
   };
 
-  outputs = { self, nixpkgs, sops-nix, ... }@inputs:
+  outputs = { self, nixpkgs, sops-nix, stablenixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";  # Adjust based on your architecture
       pkgs = import nixpkgs {
+        system = system;
+      };
+      stable-pkgs = import stablenixpkgs {
         system = system;
       };
       ckb-next = import ./ckb.nix {
@@ -29,7 +33,7 @@
       nixosConfigurations.riggen = nixpkgs.lib.nixosSystem {
         specialArgs = {
           username = "maw";
-          inherit inputs system;
+          inherit inputs system stable-pkgs;
           };
         modules = [
           #./configuration.nix

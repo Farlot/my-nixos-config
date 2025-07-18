@@ -34,8 +34,11 @@
     ydotool
     rust-stakeholder
     rclone
-    easyeffects
+    #easyeffects
+    #noisetorch #enable instead of package
   ];
+
+  programs.noisetorch.enable = true;
 
   # Coolercontrol / Virtual
   programs.coolercontrol.enable = true;

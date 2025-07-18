@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, stable-pkgs, lib, inputs, ... }:
 
 {
   imports =
@@ -98,17 +98,20 @@
   #EDITOR = "kate";
   #};
 
-  environment.systemPackages = with pkgs; [
-    keepassxc
-    element-desktop
-    discord
-    fastfetch
-    podman
-    btop
-    nh
-    sops
-    firefox
+  environment.systemPackages = [
+    pkgs.keepassxc
+    pkgs.element-desktop
+    pkgs.discord
+    pkgs.fastfetch
+    pkgs.podman
+    pkgs.btop
+    pkgs.nh
+    pkgs.sops
+    pkgs.firefox
+    stable-pkgs.gimp
   ];
+
+
 
   # fetch secrets with :
   # $(cat ${config.sops.secrets."myservice/my_subdir/my_secret".path})

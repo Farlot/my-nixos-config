@@ -10,7 +10,7 @@
 
 
   home.packages = with pkgs; [
-    gimp
+    #gimp
     obsidian
     neovim
     flameshot
