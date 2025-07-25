@@ -34,8 +34,6 @@
     ydotool
     rust-stakeholder
     rclone
-    #easyeffects
-    #noisetorch #enable instead of package
   ];
 
   programs.noisetorch.enable = true;
