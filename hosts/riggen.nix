@@ -7,7 +7,7 @@
 
   imports =[
     ../modules/arr.nix
-    ../modules/wireguardvpn.nix
+    #../modules/wireguardvpn.nix
   ];
 
 
@@ -69,12 +69,12 @@
   };
   # Nvidia settings
   hardware.nvidia = {
-    #modesetting.enable = true;
+    modesetting.enable = true;
     powerManagement.enable = false;
     powerManagement.finegrained = false;
     #open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
   services.xserver.videoDrivers = [ "nvidia" ];
 

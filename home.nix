@@ -33,6 +33,30 @@
     rcon
   ];
 
+  programs.chromium = {
+    enable = true;
+    package = pkgs.brave;
+    extensions = [
+      { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
+      { id = "oboonakemofpalcgghocfoadofidjkkk"; } # KeePassXC
+      { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # Dark Reader
+      { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; } # SponsorBlock
+      { id = "mmnhjecbajmgkapcinkhdnjabclcnfpg"; } # Reddit Promoted Ad Blocker
+      { id = "omoinegiohhgbikclijaniebjpkeopip"; } # Clickbait Remover Youtube
+      { id = "gebbhagfogifgggkldgodflihgfeippi"; } # Return YouTube Dislike
+      { id = "ajopnjidmegmdimjlfnijceegpefgped"; } # BetterTTV
+      { id = "kbmfpngjjgdllneeigpgjifpgocmfgmb"; } # Reddit Enhancement Suite
+      { id = "fchmanciglollaagnijpcagpofejennb"; } # Twitch Channel Point Auto Claimer
+      { id = "ammjkodgmmoknidbanneddgankgfejfh"; } # 7TV
+      ];
+    commandLineArgs = [
+      #"--disable-features=WebRtcAllowInputVolumeAdjustment"
+    ];
+  };
+
+
+
+
   programs.git = {
     enable = true;
     userName = "Farlot";  # Replace with your GitHub username
@@ -62,7 +86,7 @@
 
 
   imports = [
-      ./modules/home/autostart.nix  # Import the autostart file
+      #./modules/home/autostart.nix  # Import the autostart file
     ];
 
 
