@@ -33,9 +33,9 @@
     rcon
   ];
 
-  programs.chromium = {
+  programs.brave = {
     enable = true;
-    package = pkgs.brave;
+    #package = pkgs.brave;
     extensions = [
       { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
       { id = "oboonakemofpalcgghocfoadofidjkkk"; } # KeePassXC
@@ -44,13 +44,15 @@
       { id = "mmnhjecbajmgkapcinkhdnjabclcnfpg"; } # Reddit Promoted Ad Blocker
       { id = "omoinegiohhgbikclijaniebjpkeopip"; } # Clickbait Remover Youtube
       { id = "gebbhagfogifgggkldgodflihgfeippi"; } # Return YouTube Dislike
-      { id = "ajopnjidmegmdimjlfnijceegpefgped"; } # BetterTTV
+      #{ id = "ajopnjidmegmdimjlfnijceegpefgped"; } # BetterTTV
       { id = "kbmfpngjjgdllneeigpgjifpgocmfgmb"; } # Reddit Enhancement Suite
       { id = "fchmanciglollaagnijpcagpofejennb"; } # Twitch Channel Point Auto Claimer
       { id = "ammjkodgmmoknidbanneddgankgfejfh"; } # 7TV
       ];
     commandLineArgs = [
       #"--disable-features=WebRtcAllowInputVolumeAdjustment"
+      "--disable-features=PasswordManagerOnboarding"
+      "--disable-features=AutofillEnableAccountWalletStorage"
     ];
   };
 
