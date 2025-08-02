@@ -44,10 +44,10 @@
       { id = "mmnhjecbajmgkapcinkhdnjabclcnfpg"; } # Reddit Promoted Ad Blocker
       { id = "omoinegiohhgbikclijaniebjpkeopip"; } # Clickbait Remover Youtube
       { id = "gebbhagfogifgggkldgodflihgfeippi"; } # Return YouTube Dislike
-      #{ id = "ajopnjidmegmdimjlfnijceegpefgped"; } # BetterTTV
       { id = "kbmfpngjjgdllneeigpgjifpgocmfgmb"; } # Reddit Enhancement Suite
       { id = "fchmanciglollaagnijpcagpofejennb"; } # Twitch Channel Point Auto Claimer
       { id = "ammjkodgmmoknidbanneddgankgfejfh"; } # 7TV
+      #{ id = "ajopnjidmegmdimjlfnijceegpefgped"; } # BetterTTV
       ];
     commandLineArgs = [
       #"--disable-features=WebRtcAllowInputVolumeAdjustment"
