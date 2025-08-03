@@ -93,6 +93,7 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users.maw = import ../home.nix;
+    backupFileExtension = "hm-bak";
   };
 
   #sops.age.keyFile = "/home/maw/.config/sops/age/keys.txt";

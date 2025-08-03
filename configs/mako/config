@@ -1,0 +1,18 @@
+background-color=#282828D9
+text-color=#02a1bd
+font=monospace 9
+border-color=#02a1bd
+width=600
+default-timeout=2000
+border-radius=5
+
+[urgency=high]
+background-color=#282828D9
+border-color=#fc2b3c
+text-color=#fc2b3c
+font=Fira Sans Bold 11
+default-timeout=0
+
+
+[app-name=discord summary~"Maw's Lair"]
+urgency=high

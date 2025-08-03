@@ -37,8 +37,15 @@
   i18n.defaultLocale = "en_US.UTF-8";
   services.xserver.enable = true;
 
+  # KDE
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
+
+  # Hyprland
+  programs.hyprland = { enable = true; xwayland.enable = true;};
+  programs.waybar = { enable = true;};
+  programs.hyprlock.enable = true;
+
 
   services.xserver.xkb = {
   layout = "no";
@@ -109,8 +116,16 @@
     pkgs.sops
     pkgs.firefox
     stable-pkgs.gimp
+    pkgs.pavucontrol
+    # Hyprland rebuild
+    pkgs.hyprshot
+    pkgs.libnotify
+    pkgs.xfce.thunar
+    pkgs.kitty
+    pkgs.rofi-wayland
+    pkgs.hyprpaper
+    pkgs.morgen
   ];
-
 
 
   # fetch secrets with :

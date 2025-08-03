@@ -70,6 +70,15 @@
     };
   };
 
+  xdg.configFile = {
+    "hypr" = { source = ./configs/hypr; recursive = true; };
+    "kitty" = { source = ./configs/kitty; recursive = true; };
+    "rofi" = { source = ./configs/rofi; recursive = true; };
+    "waybar" = { source = ./configs/waybar; recursive = true; };
+    "waybar/btcprice.sh" = { source = ./configs/waybar/btcprice.sh; executable = true; };
+    #"mako" = { source = ./configs/mako; recursive = true; };
+  };
+
 
 
 
