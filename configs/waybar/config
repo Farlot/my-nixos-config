@@ -1,31 +1,21 @@
 {
   "layer": "top",
   "position": "top",
+  "output": "DP-1",
   "modules-left": ["hyprland/workspaces"],
-  "modules-center": ["clock", "custom/btcprice"],
-  "modules-right": ["tray", "bluetooth", "cpu", "memory", "battery", "pulseaudio"],
+  "modules-center": ["clock"],
+  "modules-right": ["tray", "cpu", "memory", "pulseaudio"],
 
   "tray": {
   "icon-size": 16,
   "spacing": 10,
   },
 
-
   "clock": {
     "format": " {:%A, %B %d, %Y | %H:%M:%S}",
     "tooltip-format": " {:%A, %B %d, %Y | %H:%M:%S}",
     "interval": 1,
-    "on-click": "morgen",
-  },
-
-
-  "custom/btcprice": {
-    "exec": "~/.config/waybar/btcprice.sh",
-    "return-type": "json",
-    "interval": 60,
-    "format": " {}",
-    "tooltip": true,
-    "on-click": "xdg-open 'https://pro.kraken.com/app/trade/btc-usd'",
+    "on-click": "korganizer",
   },
 
   "cpu": {
@@ -48,8 +38,6 @@
   "hyprland/workspaces": {
     "all-outputs": true,
     "disable-scroll": false
-
   }
-
 
 }

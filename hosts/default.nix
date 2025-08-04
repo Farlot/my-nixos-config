@@ -38,8 +38,11 @@
   services.xserver.enable = true;
 
   # KDE
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    autoNumlock = true;
+  };
+  #services.desktopManager.plasma6.enable = true;
 
   # Hyprland
   programs.hyprland = { enable = true; xwayland.enable = true;};
@@ -47,9 +50,12 @@
   programs.hyprlock.enable = true;
 
 
+  fonts.packages = with pkgs; [ nerd-fonts.jetbrains-mono ];
+
+
   services.xserver.xkb = {
-  layout = "no";
-  variant = "";
+    layout = "no";
+    variant = "";
   };
   console.keyMap = "no";
   services.printing.enable = true;
@@ -124,7 +130,8 @@
     pkgs.kitty
     pkgs.rofi-wayland
     pkgs.hyprpaper
-    pkgs.morgen
+    pkgs.kdePackages.korganizer
+    pkgs.kdePackages.gwenview
   ];
 
 

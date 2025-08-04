@@ -56,7 +56,19 @@
     ];
   };
 
-
+  # Define default applications using xdg.mimeApps
+  xdg.mimeApps = {
+    enable = true; # Ensures the necessary services are active
+    defaultApplications = {
+      "image/jpeg" = [ "org.kde.gwenview.desktop" ];
+      "image/png" = [ "org.kde.gwenview.desktop" ];
+      "image/gif" = [ "org.kde.gwenview.desktop" ];
+      "image/bmp" = [ "org.kde.gwenview.desktop" ];
+      "image/webp" = [ "org.kde.gwenview.desktop" ];
+      "image/svg+xml" = [ "org.kde.gwenview.desktop" ];
+     #this does not work
+    };
+  };
 
 
   programs.git = {
@@ -75,8 +87,11 @@
     "kitty" = { source = ./configs/kitty; recursive = true; };
     "rofi" = { source = ./configs/rofi; recursive = true; };
     "waybar" = { source = ./configs/waybar; recursive = true; };
-    "waybar/btcprice.sh" = { source = ./configs/waybar/btcprice.sh; executable = true; };
+    #"waybar/btcprice.sh" = { source = ./configs/waybar/btcprice.sh; executable = true; };
     #"mako" = { source = ./configs/mako; recursive = true; };
+  };
+  home.file = {
+    ".local/share/rofi/themes" = { source = ./configs/rofitheme/themes; recursive = true;};
   };
 
 
@@ -86,9 +101,7 @@
   # home.file.".ssh/github".source = "/path/to/your/github/key";  # Replace this with the full path to your private key
 
 
-  home.file = {
 
-  };
   home.file.".config/nixpkgs/config.nix".text = ''
     {
       allowUnfree = true;
@@ -98,6 +111,7 @@
 
   imports = [
       #./modules/home/autostart.nix  # Import the autostart file
+      #./modules/waybar.nix
     ];
 
 
