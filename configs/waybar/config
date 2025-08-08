@@ -15,7 +15,7 @@
     "format": " {:%A, %B %d, %Y | %H:%M:%S}",
     "tooltip-format": " {:%A, %B %d, %Y | %H:%M:%S}",
     "interval": 1,
-    "on-click": "korganizer",
+    "on-click": "kitty --hold calcurse",
   },
 
   "cpu": {

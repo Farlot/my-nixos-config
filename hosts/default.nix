@@ -126,13 +126,16 @@
     # Hyprland rebuild
     pkgs.hyprshot
     pkgs.libnotify
-    pkgs.xfce.thunar
+    #pkgs.xfce.thunar
     pkgs.kitty
     pkgs.rofi-wayland
     pkgs.hyprpaper
-    pkgs.kdePackages.korganizer
+    pkgs.calcurse
     pkgs.kdePackages.gwenview
   ];
+
+  programs.thunar.enable = true;
+  programs.xfconf.enable = true;
 
 
   # fetch secrets with :
