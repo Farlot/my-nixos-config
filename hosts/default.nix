@@ -132,6 +132,7 @@
     pkgs.hyprpaper
     pkgs.calcurse
     pkgs.kdePackages.gwenview
+    pkgs.kdePackages.ark
   ];
 
   programs.thunar.enable = true;
