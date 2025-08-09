@@ -60,6 +60,7 @@
   xdg.mimeApps = {
     enable = true; # Ensures the necessary services are active
     defaultApplications = {
+      "inode/directory" = [ "org.xfce.Thunar.desktop" ];
       "image/jpeg" = [ "org.kde.gwenview.desktop" ];
       "image/png" = [ "org.kde.gwenview.desktop" ];
       "image/gif" = [ "org.kde.gwenview.desktop" ];
