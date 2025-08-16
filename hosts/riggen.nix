@@ -34,8 +34,15 @@
     ydotool
     rust-stakeholder
     rclone
+    autorandr
   ];
 
+  services.autorandr = {
+    enable = true;
+    };
+
+
+  # Noisetorch noisecancel stuff
   programs.noisetorch.enable = true;
 
   # Coolercontrol / Virtual
