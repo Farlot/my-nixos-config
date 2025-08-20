@@ -12,6 +12,7 @@
 
 
   # Packages
+  nixpkgs.config.permittedInsecurePackages = ["dotnet-runtime-7.0.20"];
   environment.systemPackages = with pkgs; [
     kdePackages.kate
     goxlr-utility
@@ -35,6 +36,8 @@
     rust-stakeholder
     rclone
     autorandr
+    # Games
+    vintagestory
   ];
 
   services.autorandr = {
@@ -97,10 +100,11 @@
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/maw/.steam/root/compatabilitytools.d";
   };
 
+  home-manager.backupFileExtension = "hm-bak";
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users.maw = import ../home.nix;
-    backupFileExtension = "hm-bak";
+
   };
 
   #sops.age.keyFile = "/home/maw/.config/sops/age/keys.txt";
