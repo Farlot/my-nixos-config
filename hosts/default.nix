@@ -126,7 +126,7 @@
     # Hyprland rebuild
     pkgs.hyprshot
     pkgs.libnotify
-    #pkgs.xfce.thunar
+    pkgs.kdePackages.dolphin
     pkgs.kitty
     pkgs.rofi-wayland
     pkgs.hyprpaper
@@ -134,10 +134,6 @@
     pkgs.kdePackages.gwenview
     pkgs.kdePackages.ark
   ];
-
-  programs.thunar.enable = true;
-  programs.xfconf.enable = true;
-
 
   # fetch secrets with :
   # $(cat ${config.sops.secrets."myservice/my_subdir/my_secret".path})
