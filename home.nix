@@ -33,6 +33,13 @@
     rcon
   ];
 
+  programs.rofi = {
+    enable = true;
+    plugins = [
+      pkgs.rofi-calc
+    ];
+  };
+
   programs.brave = {
     enable = true;
     #package = pkgs.brave;

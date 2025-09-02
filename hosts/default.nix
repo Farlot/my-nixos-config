@@ -128,7 +128,6 @@
     pkgs.libnotify
     pkgs.kdePackages.dolphin
     pkgs.kitty
-    pkgs.rofi-wayland
     pkgs.hyprpaper
     pkgs.calcurse
     pkgs.kdePackages.gwenview
