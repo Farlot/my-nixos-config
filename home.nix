@@ -31,6 +31,8 @@
     tldr
     itch
     rcon
+    wowup-cf
+    qdirstat
   ];
 
   programs.rofi = {
