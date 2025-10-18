@@ -30,7 +30,6 @@
     ranger
     tldr
     itch
-    rcon
     wowup-cf
     qdirstat
   ];

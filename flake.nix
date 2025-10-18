@@ -37,10 +37,10 @@
           };
         modules = [
           #./configuration.nix
+          ./modules/virt.nix
           sops-nix.nixosModules.sops
           ./hosts
           ./hosts/riggen.nix
-          ./modules/virt.nix
           ./modules/nh.nix
           ./modules/hardware/mounts.nix
           {
