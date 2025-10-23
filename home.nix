@@ -90,6 +90,9 @@
     };
   };
 
+  # Bashfix for scripts
+  programs.bash.enable = true;
+
   xdg.configFile = {
     "hypr" = { source = ./configs/hypr; recursive = true; };
     "kitty" = { source = ./configs/kitty; recursive = true; };

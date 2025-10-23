@@ -35,6 +35,14 @@
     "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
   },
 
+  "custom/ping": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/ping.sh",
+    "interval": 10,
+    "on-click": "kitty --hold ping 8.8.8.8"
+  },
+
   "hyprland/workspaces": {
     "all-outputs": true,
     "disable-scroll": false
