@@ -11,6 +11,7 @@
       #./icarus.nix
       #./soulmask.nix
       #./ss14.nix
+      ./necesse.nix
       ./vintagestory.nix
       ./vintagestorykaoi.nix
     ];
