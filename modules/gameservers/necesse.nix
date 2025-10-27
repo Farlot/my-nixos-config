@@ -4,7 +4,7 @@
   virtualisation.oci-containers.containers.necesse = {
     image = "docker.io/brammys/necesse-server:latest";
     autoStart = false;
-    ports = [ "14159:14159" ];
+    ports = [ "14159:14159/tcp" "14159:14159/udp" ];
     volumes = [
       "/mnt/stuff/DockerStuff/necesse/saves:/necesse/saves"
     ];

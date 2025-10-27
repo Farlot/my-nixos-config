@@ -8,6 +8,7 @@
   imports =[
     ../modules/arr.nix
     #../modules/wireguardvpn.nix
+    ../modules/ddns.nix
   ];
 
 
