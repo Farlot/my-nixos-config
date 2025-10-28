@@ -2,6 +2,8 @@
 
 {
 
+    sops.secrets."domeneshop/token" = {};
+    sops.secrets."domeneshop/secret" = {};
 
     systemd.services.domeneshop-dyndns = {
         # This service will run your update script

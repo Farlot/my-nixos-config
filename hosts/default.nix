@@ -140,8 +140,6 @@
   sops.age.keyFile = "/home/maw/.config/sops/age/keys.txt";
   sops.secrets.wgpub = {};
   sops.secrets.wgpriv = {};
-  sops.secrets."domeneshop/token" = {};
-  sops.secrets."domeneshop/secret" = {};
   #sops.secrets."myservice/my_subdir/mysecret" = {};
 
   services.pcscd.enable = true;
