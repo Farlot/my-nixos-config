@@ -1,6 +1,11 @@
 { config, pkgs, lib, inputs, ... }:
 
 {
+
+  # Serverpassword
+  # PASSWORD = "$(cat ${config.sops.secrets."serverpass".path})";
+  sops.secrets.serverpass = {};
+
   imports =
     [
       #./empyrion.nix
