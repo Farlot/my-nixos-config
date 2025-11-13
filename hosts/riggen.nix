@@ -20,9 +20,9 @@
     ckb-next
     betterdiscordctl
     coolercontrol.coolercontrold
-    coolercontrol.coolercontrol-liqctld
-    coolercontrol.coolercontrol-gui
-    protonup
+    #coolercontrol.coolercontrol-liqctld
+    #coolercontrol.coolercontrol-gui
+    protonup-ng
     docker
     docker-compose
     runc
