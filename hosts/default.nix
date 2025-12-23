@@ -112,7 +112,6 @@
 
   environment.systemPackages = [
     pkgs.keepassxc
-    pkgs.element-desktop
     pkgs.discord
     pkgs.fastfetch
     pkgs.podman

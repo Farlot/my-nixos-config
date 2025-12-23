@@ -38,7 +38,7 @@
     rclone
     autorandr
     # Games
-    vintagestory
+    #vintagestory
   ];
 
   services.autorandr = {

@@ -32,6 +32,7 @@
     itch
     wowup-cf
     qdirstat
+    appimage-run
   ];
 
   programs.rofi = {
