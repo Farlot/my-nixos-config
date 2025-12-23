@@ -13,7 +13,7 @@
     };
     # Automatic updates
     system.autoUpgrade = {
-        enable = true;
+        enable = false;
         dates = "05:00";
         flake = "/mnt/stuff/nixos";
         flags = [
