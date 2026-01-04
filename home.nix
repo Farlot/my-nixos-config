@@ -33,6 +33,7 @@
     wowup-cf
     qdirstat
     appimage-run
+    gocryptfs
   ];
 
   programs.rofi = {
