@@ -94,6 +94,10 @@
 
   # Bashfix for scripts
   programs.bash.enable = true;
+  programs.bash.shellAliases = {
+    v-up = "gocryptfs /mnt/spin/.vault_encrypted /mnt/spin/vault";
+    v-down = "fusermount -u /mnt/spin/vault";
+  };
 
   xdg.configFile = {
     "hypr" = { source = ./configs/hypr; recursive = true; };
