@@ -41,6 +41,8 @@
     #vintagestory
   ];
 
+  services.dbus.enable = true;
+
   services.autorandr = {
     enable = true;
     };

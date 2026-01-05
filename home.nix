@@ -33,7 +33,7 @@
     wowup-cf
     qdirstat
     appimage-run
-    gocryptfs
+    gocryptfs # encrypt vault
   ];
 
   programs.rofi = {
@@ -89,6 +89,20 @@
       safe.directory = [ "/mnt/stuff/nixos" ];
       # Ensure git uses SSH for GitHub instead of HTTPS
       url."git@github.com:".insteadOf = "https://github.com/";
+    };
+  };
+
+  # Notification handler mako
+  services.mako = {
+    enable = true;
+    settings = {
+      backgroundColor = "#1e1e2e"; # Catppuccin Mocha Base
+      textColor = "#cdd6f4";
+      borderColor = "#89b4fa";
+      borderRadius = 5;
+      borderSize = 2;
+      defaultTimeout = 5000; # 5 seconds
+      layer = "overlay";     # Ensures it shows above windows
     };
   };
 
