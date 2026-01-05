@@ -9,6 +9,7 @@
     ../modules/arr.nix
     #../modules/wireguardvpn.nix
     ../modules/ddns.nix
+    inputs.stable-diffusion-webui-nix.nixosModules.default
   ];
 
 
@@ -37,6 +38,7 @@
     rust-stakeholder
     rclone
     autorandr
+    stable-diffusion-webui.comfy.cuda
     # Games
     #vintagestory
   ];

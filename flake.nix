@@ -14,6 +14,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Other inputs if needed
+    stable-diffusion-webui-nix = {
+      url = "github:Janrupf/stable-diffusion-webui-nix/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, sops-nix, stablenixpkgs, ... }@inputs:
