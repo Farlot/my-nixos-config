@@ -39,6 +39,7 @@
     rclone
     autorandr
     stable-diffusion-webui.comfy.cuda
+    stable-diffusion-webui.forge.cuda
     # Games
     #vintagestory
   ];
