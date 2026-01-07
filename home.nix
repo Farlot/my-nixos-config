@@ -58,9 +58,55 @@
             mkdir -p "/mnt/spin/vault/comfyuidata"
         fi
 
-        # 3. Launch ComfyUI
+        # 3. Symlink models
+        MODELS_DIR="/mnt/spin/vault/stablediff/models"
+        TARGET_DIR="/mnt/spin/vault/comfyuidata/models/checkpoints"
+
+        mkdir -p "$MODELS_DIR"
+        if [ ! -L "$TARGET_DIR" ]; then
+            rm -rf "$TARGET_DIR" # Remove directory if it's not a link
+            ln -s "$MODELS_DIR" "$TARGET_DIR"
+        fi
+
+        # 4. Launch ComfyUI
         echo "🚀 Launching ComfyUI..."
         comfy-ui --base-directory "/mnt/spin/vault/comfyuidata"
+      '';
+    })
+    (writeShellApplication {
+      name = "webui-vault";
+      runtimeInputs = [ pkgs.gocryptfs pkgs.libnotify pkgs.util-linux ];
+      text = ''
+        # 1. Check if mounted
+        if ! mountpoint -q "/mnt/spin/vault"; then
+            echo "🔐 Vault is locked. Please enter password to mount..."
+            notify-send "Vault" "Mounting required for SD-WebUI"
+
+            if ! gocryptfs "/mnt/spin/.vault_encrypted" "/mnt/spin/vault"; then
+                echo "❌ Failed to mount vault. Exiting."
+                exit 1
+            fi
+        fi
+
+        # 2. Check/Create data directory
+        if [ ! -d "/mnt/spin/vault/webuidata" ]; then
+            echo "Creating data directory at /mnt/spin/vault/webuidata..."
+            mkdir -p "/mnt/spin/vault/webuidata"
+        fi
+
+        # 3. Symlink models
+        MODELS_DIR="/mnt/spin/vault/stablediff/models"
+        TARGET_DIR="/mnt/spin/vault/webuidata/models/Stable-diffusion"
+
+        mkdir -p "$MODELS_DIR"
+        if [ ! -L "$TARGET_DIR" ]; then
+            rm -rf "$TARGET_DIR" # Remove directory if it's not a link
+            ln -s "$MODELS_DIR" "$TARGET_DIR"
+        fi
+
+        # 3. Launch WebUI
+        echo "🚀 Launching Stable Diffusion WebUI..."
+        stable-diffusion-webui --data-dir "/mnt/spin/vault/webuidata"
       '';
     })
   ];
@@ -127,12 +173,13 @@
   services.mako = {
     enable = true;
     settings = {
-      backgroundColor = "#1e1e2e"; # Catppuccin Mocha Base
-      textColor = "#cdd6f4";
-      borderColor = "#89b4fa";
-      borderRadius = 5;
-      borderSize = 2;
-      defaultTimeout = 5000; # 5 seconds
+      anchor = "top-left";
+      background-color = "#1e1e2e"; # Catppuccin Mocha Base
+      text-color = "#cdd6f4";
+      border-color = "#89b4fa";
+      border-radius = 5;
+      border-size = 2;
+      default-timeout = 5000; # 5 seconds
       layer = "overlay";     # Ensures it shows above windows
     };
   };
