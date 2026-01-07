@@ -7,7 +7,7 @@
 
   imports =[
     ../modules/arr.nix
-    #../modules/wireguardvpn.nix
+    ../modules/wireguardvpn.nix
     ../modules/ddns.nix
     inputs.stable-diffusion-webui-nix.nixosModules.default
   ];
