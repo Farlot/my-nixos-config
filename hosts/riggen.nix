@@ -6,6 +6,7 @@
   media_server.enable = false;
 
   imports =[
+    ../modules/ollama.nix
     ../modules/arr.nix
     ../modules/wireguardvpn.nix
     ../modules/ddns.nix

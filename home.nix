@@ -34,6 +34,8 @@
     qdirstat
     appimage-run
     gocryptfs # encrypt vault
+    ollama
+    oterm
     # Custom shell stuff:
     (writeShellApplication {
       name = "comfy-vault";
