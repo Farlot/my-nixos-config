@@ -3,7 +3,7 @@
   services.ollama = {
     enable = true;
     package = pkgs.ollama-cuda;
-    loadModels = [ "deepseek-r1:latest" "deepseek-r1:14b" "deepseek-r1:32b" "gpt-oss:latest" ];
+    loadModels = [ "deepseek-r1:latest" "deepseek-r1:14b" "deepseek-r1:32b" "gpt-oss:latest" "aeline/halo:latest" ];
     # acceleration = "cuda"; # Uncomment for NVIDIA
     # acceleration = "rocm"; # Uncomment for AMD
   };
