@@ -150,8 +150,11 @@
   };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = "*";
+  };
 
   system.stateVersion = "24.05"; # Did you read the comment?
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
