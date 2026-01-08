@@ -4,6 +4,7 @@
 
     sops.secrets."domeneshop/token" = {};
     sops.secrets."domeneshop/secret" = {};
+    sops.secrets."domeneshop/domain" = {};
 
     systemd.services.domeneshop-dyndns = {
         # This service will run your update script
@@ -16,12 +17,13 @@
         script = ''
         TOKEN=$(cat ${config.sops.secrets."domeneshop/token".path})
         SECRET=$(cat ${config.sops.secrets."domeneshop/secret".path})
+        DOMAIN=$(cat ${config.sops.secrets."domeneshop/domain".path})
 
         # 3. Get the current external IP
         IP=$(${pkgs.curl}/bin/curl -q ifconfig.me)
 
         # 4. Run the update command
-        ${pkgs.curl}/bin/curl --silent "https://$TOKEN:$SECRET@api.domeneshop.no/v0/dyndns/update?hostname=farlot.no&myip=$IP"
+        ${pkgs.curl}/bin/curl --silent "https://$TOKEN:$SECRET@api.domeneshop.no/v0/dyndns/update?hostname=$DOMAIN&myip=$IP"
         '';
 
         # Ensure yq and curl are available in the service environment
