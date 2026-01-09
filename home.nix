@@ -35,7 +35,7 @@
     appimage-run
     gocryptfs # encrypt vault
     ollama
-    oterm
+    #oterm
     # Custom shell stuff:
     (writeShellApplication {
       name = "comfy-vault";
