@@ -35,6 +35,7 @@
     appimage-run
     gocryptfs # encrypt vault
     ollama
+    ouch
     #oterm
     # Custom shell stuff:
     (writeShellApplication {
@@ -236,6 +237,7 @@
 
 
   imports = [
+      ./modules/yazi.nix # filemanager
       #./modules/home/autostart.nix  # Import the autostart file
       #./modules/waybar.nix
     ];
