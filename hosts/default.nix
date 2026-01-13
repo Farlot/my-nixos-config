@@ -38,11 +38,11 @@
   services.xserver.enable = true;
 
   # KDE
+  #services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm = {
     enable = true;
     autoNumlock = true;
   };
-  #services.desktopManager.plasma6.enable = true;
 
   # Hyprland
   programs.hyprland = { enable = true; xwayland.enable = true;};
@@ -77,11 +77,15 @@
     #media-session.enable = true;
   };
 
+  # Shell
+  programs.zsh.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.maw = {
     isNormalUser = true;
     description = "Marcus";
     extraGroups = [ "networkmanager" "wheel" "docker" "vboxusers" "gamemode"];
+    shell = pkgs.zsh;
     packages = with pkgs; [
     #kdePackages.kate
     #  thunderbird

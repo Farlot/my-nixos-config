@@ -187,11 +187,26 @@
   };
 
   # Bashfix for scripts
-  programs.bash.enable = true;
-  programs.bash.shellAliases = {
-    v-up = "gocryptfs /mnt/spin/.vault_encrypted /mnt/spin/vault";
-    v-down = "fusermount -u /mnt/spin/vault";
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+    shellAliases = {
+      v-up = "gocryptfs /mnt/spin/.vault_encrypted /mnt/spin/vault";
+      v-down = "fusermount -u /mnt/spin/vault";
+    };
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" "sudo" "docker" ];
+      theme = "robbyrussell"; # or "agnoster", "powerlevel10k", etc.
+    };
   };
+  #programs.bash.enable = false;
+  #programs.bash.shellAliases = {
+  #  v-up = "gocryptfs /mnt/spin/.vault_encrypted /mnt/spin/vault";
+  #  v-down = "fusermount -u /mnt/spin/vault";
+  #};
 
   xdg.configFile = {
     "hypr" = { source = ./configs/hypr; recursive = true; };
