@@ -244,7 +244,7 @@
 
 
   home.sessionVariables = {
-     EDITOR = "kate";
+     EDITOR = "kitty --title yazi -e yazi";
   };
 
   home.stateVersion = "24.05"; # Please read the comment before changing.
