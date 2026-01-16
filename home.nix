@@ -153,7 +153,7 @@
   xdg.mimeApps = {
     enable = true; # Ensures the necessary services are active
     defaultApplications = {
-      "inode/directory" = [ "org.kde.dolphin.desktop" ];
+      "inode/directory" = [ "yazi.desktop" ];
       "image/jpeg" = [ "org.kde.gwenview.desktop" ];
       "image/png" = [ "org.kde.gwenview.desktop" ];
       "image/gif" = [ "org.kde.gwenview.desktop" ];

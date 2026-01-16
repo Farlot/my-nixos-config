@@ -25,6 +25,7 @@
     };
 
     # 3. Syntax Highlighting (Treesitter)
+    plugins.web-devicons.enable = true;
     plugins.treesitter = {
       enable = true;
       settings = {
@@ -51,8 +52,19 @@
         "<leader>fg" = "live_grep";
         "<leader>fb" = "buffers";
       };
-    plugins.web-devicons.enable = true;
     };
+    plugins.fugitive.enable = true;
+    keymaps = [
+      {
+        key = "<leader>gs";
+        action = "<cmd>Git<CR>";
+        mode = "n";
+        options = {
+          desc = "Git Status"; # Optional: Adds a description for tools like which-key
+        };
+      }
+      # ... other keymaps you might have ...
+    ];
 
     # 6. AI Agent (Ollama Integration)
     # This setup uses 'gen.nvim', a popular Ollama plugin.
