@@ -235,6 +235,7 @@
         before_sleep_cmd = "loginctl lock-session";
         # Command to run after waking up
         after_sleep_cmd = "hyprctl dispatch dpms on";
+        ignore_dbus_inhibit = true;
       };
 
       listener = [
