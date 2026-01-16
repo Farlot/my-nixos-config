@@ -10,6 +10,7 @@
     ../modules/arr.nix
     ../modules/wireguardvpn.nix
     ../modules/ddns.nix
+    ../modules/backup.nix
     inputs.stable-diffusion-webui-nix.nixosModules.default
   ];
 
