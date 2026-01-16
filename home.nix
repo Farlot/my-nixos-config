@@ -221,11 +221,35 @@
   };
 
 
+  services.hypridle = {
+    enable = true;
+    settings = {
+      general = {
+        # Optional: command to run when locking (if you want to use your hyprlock config)
+        lock_cmd = "pidof hyprlock || hyprlock";
+        # Command to run before sleep (suspend)
+        before_sleep_cmd = "loginctl lock-session";
+        # Command to run after waking up
+        after_sleep_cmd = "hyprctl dispatch dpms on";
+      };
 
+      listener = [
+        # 30 Minutes (1800 seconds) - Turn off screen
+        {
+          timeout = 1800;
+          on-timeout = "hyprctl dispatch dpms off";
+          on-resume = "hyprctl dispatch dpms on";
+        }
 
-  # Ensure the SSH key is placed in the right location using home-manager
-  # home.file.".ssh/github".source = "/path/to/your/github/key";  # Replace this with the full path to your private key
-
+        # Optional: Lock screen after 30 mins (or slightly before/after)
+        # Since you already have hyprlock configured, you might want this:
+        {
+          timeout = 1800;
+          on-timeout = "loginctl lock-session";
+        }
+      ];
+    };
+  };
 
 
   home.file.".config/nixpkgs/config.nix".text = ''

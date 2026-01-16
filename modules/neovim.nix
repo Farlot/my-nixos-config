@@ -51,6 +51,7 @@
         "<leader>fg" = "live_grep";
         "<leader>fb" = "buffers";
       };
+    plugins.web-devicons.enable = true;
     };
 
     # 6. AI Agent (Ollama Integration)
