@@ -10,7 +10,6 @@
 
 
   home.packages = with pkgs; [
-    #gimp
     obsidian
     flameshot
     git
@@ -25,8 +24,6 @@
     lutris
     qbittorrent
     vlc
-    z-lua
-    ranger
     tldr
     itch
     wowup-cf
@@ -35,7 +32,7 @@
     gocryptfs # encrypt vault
     ollama
     ouch
-    #oterm
+    #oterm # Broken AI terminnal tool ?
     # Custom shell stuff:
     (writeShellApplication {
       name = "comfy-vault";
@@ -114,6 +111,13 @@
   ];
 
 
+
+  programs.zoxide = { # terminal navigation tool
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.fzf.enable = true; # terminal navigation helper for zoxide
 
   programs.rofi = {
     enable = true;
@@ -261,7 +265,7 @@
 
   imports = [
       ./modules/yazi.nix # filemanager
-      inputs.nixvim.homeManagerModules.nixvim
+      inputs.nixvim.homeModules.nixvim
       ./modules/neovim.nix
       #./modules/home/autostart.nix  # Import the autostart file
       #./modules/waybar.nix
