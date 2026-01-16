@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   nixpkgs.config = {
@@ -12,7 +12,6 @@
   home.packages = with pkgs; [
     #gimp
     obsidian
-    neovim
     flameshot
     git
     teams-for-linux
@@ -238,13 +237,15 @@
 
   imports = [
       ./modules/yazi.nix # filemanager
+      inputs.nixvim.homeManagerModules.nixvim
+      ./modules/neovim.nix
       #./modules/home/autostart.nix  # Import the autostart file
       #./modules/waybar.nix
     ];
 
 
   home.sessionVariables = {
-     EDITOR = "kitty --title yazi -e yazi";
+     # EDITOR = "kate";
   };
 
   home.stateVersion = "24.05"; # Please read the comment before changing.
