@@ -18,7 +18,7 @@
       passwordFile = config.sops.secrets.backup_password.path;
 
       # What to backup
-      paths = [ "/home/maw" ];
+      paths = [ "/home/maw" "/mnt/stuff/Jobb PC" ];
 
       # Exclude heavy/unnecessary folders
       exclude = [
@@ -57,7 +57,7 @@
 
       passwordFile = config.sops.secrets.backup_password.path;
 
-      paths = [ "/home/maw" ];
+      paths = [ "/home/maw" "/mnt/stuff/Jobb PC" ];
 
       exclude = [
         "/home/maw/.cache"

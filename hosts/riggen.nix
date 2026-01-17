@@ -37,8 +37,8 @@
     umu-launcher
     obs-studio
     ydotool
-    rust-stakeholder
     rclone
+    rust-stakeholder
     autorandr
     stable-diffusion-webui.comfy.cuda
     stable-diffusion-webui.forge.cuda
@@ -106,6 +106,7 @@
   programs.gamemode.enable = true;
   environment.sessionVariables = {
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/maw/.steam/root/compatabilitytools.d";
+    NIXOS_OZONE_WL = "1";
   };
 
   home-manager.backupFileExtension = "hm-bak";
