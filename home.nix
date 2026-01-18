@@ -110,7 +110,33 @@
     })
   ];
 
+  qt = {
+    enable = true;
+    platformTheme.name = "gtk";
+    style.name = "adwaita-dark"; # Fallback style
+  };
 
+  # 2. Set a Dark GTK Theme (Prism Launcher will pick this up)
+  gtk = {
+    enable = true;
+    theme = {
+      # Matches your Neovim/Rofi aesthetic
+      name = "Tokyonight-Dark"; 
+      package = pkgs.tokyonight-gtk-theme;
+    };
+    
+    # Optional: Match icons/cursor
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+    
+    cursorTheme = {
+      name = "Bibata-Modern-Ice";
+      package = pkgs.bibata-cursors;
+    };
+  };
+  
 
   programs.zoxide = { # terminal navigation tool
     enable = true;
@@ -249,7 +275,7 @@
         # Optional: Lock screen after 30 mins (or slightly before/after)
         # Since you already have hyprlock configured, you might want this:
         {
-          timeout = 1800;
+          timeout = 1750;
           on-timeout = "loginctl lock-session";
         }
       ];
