@@ -69,7 +69,10 @@
     # 6. AI Agent (Ollama Integration)
     # This setup uses 'gen.nvim', a popular Ollama plugin.
     # Because it's an external plugin, we add it to extraPlugins.
-    extraPlugins = [ pkgs.vimPlugins.gen-nvim ];
+    extraPlugins = [ 
+      pkgs.vimPlugins.gen-nvim
+      pkgs.vimPlugins.vim-visual-multi
+    ];
 
     extraConfigLua = ''
       require('gen').setup({
