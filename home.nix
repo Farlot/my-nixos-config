@@ -35,81 +35,7 @@
     vesktop
     webcord
     #oterm # Broken AI terminnal tool ?
-    # Custom shell stuff:
-    (writeShellApplication {
-      name = "comfy-vault";
-      runtimeInputs = [ pkgs.gocryptfs pkgs.libnotify pkgs.util-linux ];
-      text = ''
-        # 1. Check if mounted
-        if ! mountpoint -q "/mnt/spin/vault"; then
-            echo "🔐 Vault is locked. Please enter password to mount..."
-            notify-send "Vault" "Mounting required for ComfyUI"
-
-            # This will prompt for password in the current terminal
-            if ! gocryptfs "/mnt/spin/.vault_encrypted" "/mnt/spin/vault"; then
-                echo "❌ Failed to mount vault. Exiting."
-                exit 1
-            fi
-        fi
-
-        # 2. Check if the specific data directory exists inside the vault
-        if [ ! -d "/mnt/spin/vault/comfyuidata" ]; then
-            echo "⚠️ Warning: Data directory not found at /mnt/spin/vault/comfyuidata"
-            echo "Creating it now..."
-            mkdir -p "/mnt/spin/vault/comfyuidata"
-        fi
-
-        # 3. Symlink models
-        MODELS_DIR="/mnt/spin/vault/stablediff/models"
-        TARGET_DIR="/mnt/spin/vault/comfyuidata/models/checkpoints"
-
-        mkdir -p "$MODELS_DIR"
-        if [ ! -L "$TARGET_DIR" ]; then
-            rm -rf "$TARGET_DIR" # Remove directory if it's not a link
-            ln -s "$MODELS_DIR" "$TARGET_DIR"
-        fi
-
-        # 4. Launch ComfyUI
-        echo "🚀 Launching ComfyUI..."
-        comfy-ui --base-directory "/mnt/spin/vault/comfyuidata"
-      '';
-    })
-    (writeShellApplication {
-      name = "webui-vault";
-      runtimeInputs = [ pkgs.gocryptfs pkgs.libnotify pkgs.util-linux ];
-      text = ''
-        # 1. Check if mounted
-        if ! mountpoint -q "/mnt/spin/vault"; then
-            echo "🔐 Vault is locked. Please enter password to mount..."
-            notify-send "Vault" "Mounting required for SD-WebUI"
-
-            if ! gocryptfs "/mnt/spin/.vault_encrypted" "/mnt/spin/vault"; then
-                echo "❌ Failed to mount vault. Exiting."
-                exit 1
-            fi
-        fi
-
-        # 2. Check/Create data directory
-        if [ ! -d "/mnt/spin/vault/webuidata" ]; then
-            echo "Creating data directory at /mnt/spin/vault/webuidata..."
-            mkdir -p "/mnt/spin/vault/webuidata"
-        fi
-
-        # 3. Symlink models
-        MODELS_DIR="/mnt/spin/vault/stablediff/models"
-        TARGET_DIR="/mnt/spin/vault/webuidata/models/Stable-diffusion"
-
-        mkdir -p "$MODELS_DIR"
-        if [ ! -L "$TARGET_DIR" ]; then
-            rm -rf "$TARGET_DIR" # Remove directory if it's not a link
-            ln -s "$MODELS_DIR" "$TARGET_DIR"
-        fi
-
-        # 3. Launch WebUI
-        echo "🚀 Launching Stable Diffusion WebUI..."
-        stable-diffusion-webui --data-dir "/mnt/spin/vault/webuidata"
-      '';
-    })
+    
   ];
 
   qt = {
@@ -244,7 +170,7 @@
     "hypr" = { source = ./configs/hypr; recursive = true; };
     "kitty" = { source = ./configs/kitty; recursive = true; };
     "rofi" = { source = ./configs/rofi; recursive = true; };
-    "waybar" = { source = ./configs/waybar; recursive = true; };
+    # "waybar" = { source = ./configs/waybar; recursive = true; };
     #"waybar/btcprice.sh" = { source = ./configs/waybar/btcprice.sh; executable = true; };
     #"mako" = { source = ./configs/mako; recursive = true; };
   };
@@ -296,6 +222,8 @@
       ./modules/yazi.nix # filemanager
       inputs.nixvim.homeModules.nixvim
       ./modules/neovim.nix
+      ./modules/scripts.nix
+      ./modules/waybar.nix
       #./modules/home/autostart.nix  # Import the autostart file
       #./modules/waybar.nix
     ];

@@ -46,7 +46,7 @@
 
   # Hyprland
   programs.hyprland = { enable = true; xwayland.enable = true;};
-  programs.waybar = { enable = true;};
+  #programs.waybar = { enable = true;};
   programs.hyprlock.enable = true;
 
   programs.fuse.userAllowOther = true;
