@@ -22,24 +22,24 @@
     };
   };
 
-  # Discord Autostart
-  systemd.user.services.discord = {
-    Unit = {
-      Description = "Open Discord in the background at boot";
-      After = [ "graphical-session.target" ];
-      Requires = [ "graphical-session.target" ];
-    };
-
-    Service = {
-      ExecStart = "${pkgs.discord}/bin/Discord";
-      Restart = "on-failure";
-      RestartSec = "5s";
-    };
-
-    Install = {
-      WantedBy = [ "default.target" ];
-    };
-  };
+  #  # Discord Autostart
+  #  systemd.user.services.discord = {
+  #    Unit = {
+  #      Description = "Open Discord in the background at boot";
+  #      After = [ "graphical-session.target" ];
+  #      Requires = [ "graphical-session.target" ];
+  #    };
+  #
+  #    Service = {
+  #      ExecStart = "${pkgs.discord}/bin/Discord";
+  #      Restart = "on-failure";
+  #      RestartSec = "5s";
+  #    };
+  #
+  #    Install = {
+  #      WantedBy = [ "default.target" ];
+  #    };
+  #  };
 
 
   systemd.user.startServices = true;

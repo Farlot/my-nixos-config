@@ -32,6 +32,8 @@
     gocryptfs # encrypt vault
     ollama
     ouch
+    vesktop
+    webcord
     #oterm # Broken AI terminnal tool ?
     # Custom shell stuff:
     (writeShellApplication {

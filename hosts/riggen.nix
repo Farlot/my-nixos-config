@@ -21,7 +21,6 @@
     kdePackages.kate
     goxlr-utility
     ckb-next
-    betterdiscordctl
     coolercontrol.coolercontrold
     #coolercontrol.coolercontrol-liqctld
     #coolercontrol.coolercontrol-gui

@@ -118,7 +118,6 @@
 
   environment.systemPackages = [
     pkgs.keepassxc
-    pkgs.discord
     pkgs.fastfetch
     pkgs.podman
     pkgs.btop
