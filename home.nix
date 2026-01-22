@@ -160,19 +160,11 @@
       theme = "robbyrussell"; # or "agnoster", "powerlevel10k", etc.
     };
   };
-  #programs.bash.enable = false;
-  #programs.bash.shellAliases = {
-  #  v-up = "gocryptfs /mnt/spin/.vault_encrypted /mnt/spin/vault";
-  #  v-down = "fusermount -u /mnt/spin/vault";
-  #};
 
   xdg.configFile = {
     "hypr" = { source = ./configs/hypr; recursive = true; };
     "kitty" = { source = ./configs/kitty; recursive = true; };
     "rofi" = { source = ./configs/rofi; recursive = true; };
-    # "waybar" = { source = ./configs/waybar; recursive = true; };
-    #"waybar/btcprice.sh" = { source = ./configs/waybar/btcprice.sh; executable = true; };
-    #"mako" = { source = ./configs/mako; recursive = true; };
   };
   home.file = {
     ".local/share/rofi/themes" = { source = ./configs/rofitheme/themes; recursive = true;};
