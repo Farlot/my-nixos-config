@@ -144,8 +144,6 @@
     ];
 
     settings = {
-      # user.name = "Farlot";
-      # user.email = "m.waaagan@gmail.com";
       safe.directory = [ "/mnt/stuff/nixos" ];
       url."git@github.com:".insteadOf = "https://github.com/";
 
