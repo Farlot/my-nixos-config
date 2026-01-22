@@ -6,28 +6,23 @@
     stablenixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-    #unstablenixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # Unstable url : "github:NixOS/nixpkgs/nixos-unstable"
-    # Stable 24.11 url : "github:NixOS/nixpkgs/nixos-24.11"
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Other inputs if needed
     stable-diffusion-webui-nix = {
       url = "github:Janrupf/stable-diffusion-webui-nix/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
       url = "github:nix-community/nixvim";
-      # If using stable nixpkgs, change to "nixos-24.11"
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs = { self, nixpkgs, sops-nix, stablenixpkgs, ... }@inputs:
     let
-      system = "x86_64-linux";  # Adjust based on your architecture
+      system = "x86_64-linux";
       pkgs = import nixpkgs {
         system = system;
       };
