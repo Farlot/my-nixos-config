@@ -121,10 +121,9 @@
   programs.git = {
     enable = true;
     settings = {
-      user.name = "Farlot";  # Replace with your GitHub username
-      user.email = "m.waaagan@gmail.com";  # Replace with your GitHub email
+      user.name = "Farlot";
+      user.email = "m.waaagan@gmail.com";
       safe.directory = [ "/mnt/stuff/nixos" ];
-      # Ensure git uses SSH for GitHub instead of HTTPS
       url."git@github.com:".insteadOf = "https://github.com/";
     };
   };
@@ -134,13 +133,13 @@
     enable = true;
     settings = {
       anchor = "top-left";
-      background-color = "#1e1e2e"; # Catppuccin Mocha Base
+      background-color = "#1e1e2e";
       text-color = "#cdd6f4";
       border-color = "#89b4fa";
       border-radius = 5;
       border-size = 2;
       default-timeout = 5000; # 5 seconds
-      layer = "overlay";     # Ensures it shows above windows
+      layer = "overlay";
     };
   };
 

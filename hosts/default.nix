@@ -83,12 +83,10 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.maw = {
     isNormalUser = true;
-    description = "Marcus";
+    description = "";
     extraGroups = [ "networkmanager" "wheel" "docker" "vboxusers" "gamemode"];
     shell = pkgs.zsh;
     packages = with pkgs; [
-    #kdePackages.kate
-    #  thunderbird
     ];
   };
 
@@ -102,19 +100,6 @@
   programs.git = {
     enable = true;
     };
-
-  #nixpkgs.config = {
-  #  programs.git.extraConfig = {
-  #    user.name = "Farlot";
-  #    user.email = "m.waaagan@gmail.com";
-  #    safe.directory = [ "/mnt/stuff/nixos" ];
-  #    url."git@github.com:".insteadOf = "https://github.com/";
-  #  };
-  #};
-
-  #environment.sessionVariables = {
-  #EDITOR = "kate";
-  #};
 
   environment.systemPackages = [
     pkgs.keepassxc
