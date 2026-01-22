@@ -184,7 +184,6 @@
 
   xdg.configFile = {
     "hypr" = { source = ./configs/hypr; recursive = true; };
-    "kitty" = { source = ./configs/kitty; recursive = true; };
     "rofi" = { source = ./configs/rofi; recursive = true; };
   };
   home.file = {
@@ -239,8 +238,7 @@
       ./modules/neovim.nix
       ./modules/scripts.nix
       ./modules/waybar.nix
-      #./modules/home/autostart.nix  # Import the autostart file
-      #./modules/waybar.nix
+      ./modules/kitty.nix
     ];
 
 
