@@ -115,12 +115,5 @@
 
   };
 
-  #sops.age.keyFile = "/home/maw/.config/sops/age/keys.txt";
-  #sops.secrets.example-key = {};
-  #sops.secrets."myservice/my_subdir/mysecret" = {};
-  #programs.ssh = {
-    #enable = true;
-    #startAgent = true;
-  #};
 
 }

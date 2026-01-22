@@ -38,32 +38,58 @@
     
   ];
 
-  qt = {
+
+  stylix = {
     enable = true;
-    platformTheme.name = "gtk";
-    style.name = "adwaita-dark"; # Fallback style
+    image = pkgs.fetchurl {
+      url = "https://raw.githubusercontent.com/NixOS/nixos-artwork/master/wallpapers/nix-wallpaper-nineish-dark-gray.png";
+      sha256 = "07zl1dlxqh9dav9pibnhr2x1llywwnyphmzcdqaby7dz5js184ly";
+    };
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+    polarity = "dark";
+
+    fonts = {
+      monospace = {
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrainsMono Nerd Font Mono";
+      };
+      sansSerif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Sans";
+      };
+      serif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Serif";
+      };
+    };
   };
 
-  # 2. Set a Dark GTK Theme (Prism Launcher will pick this up)
-  gtk = {
-    enable = true;
-    theme = {
-      # Matches your Neovim/Rofi aesthetic
-      name = "Tokyonight-Dark"; 
-      package = pkgs.tokyonight-gtk-theme;
-    };
-    
-    # Optional: Match icons/cursor
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-    
-    cursorTheme = {
-      name = "Bibata-Modern-Ice";
-      package = pkgs.bibata-cursors;
-    };
-  };
+  # qt = {
+  #   enable = true;
+  #   platformTheme.name = "gtk";
+  #   style.name = "adwaita-dark"; # Fallback style
+  # };
+
+  # # 2. Set a Dark GTK Theme (Prism Launcher will pick this up)
+  # gtk = {
+  #   enable = true;
+  #   theme = {
+  #     # Matches your Neovim/Rofi aesthetic
+  #     name = "Tokyonight-Dark"; 
+  #     package = pkgs.tokyonight-gtk-theme;
+  #   };
+  #   
+  #   # Optional: Match icons/cursor
+  #   iconTheme = {
+  #     name = "Papirus-Dark";
+  #     package = pkgs.papirus-icon-theme;
+  #   };
+  #   
+  #   cursorTheme = {
+  #     name = "Bibata-Modern-Ice";
+  #     package = pkgs.bibata-cursors;
+  #   };
+  # };
   
 
   programs.zoxide = { # terminal navigation tool
@@ -73,12 +99,6 @@
 
   programs.fzf.enable = true; # terminal navigation helper for zoxide
 
-  programs.rofi = {
-    enable = true;
-    plugins = [
-      pkgs.rofi-calc
-    ];
-  };
 
   programs.brave = {
     enable = true;
@@ -155,9 +175,6 @@
     enable = true;
     settings = {
       anchor = "top-left";
-      background-color = "#1e1e2e";
-      text-color = "#cdd6f4";
-      border-color = "#89b4fa";
       border-radius = 5;
       border-size = 2;
       default-timeout = 5000; # 5 seconds
@@ -184,11 +201,11 @@
 
   xdg.configFile = {
     "hypr" = { source = ./configs/hypr; recursive = true; };
-    "rofi" = { source = ./configs/rofi; recursive = true; };
+    #"rofi" = { source = ./configs/rofi; recursive = true; };
   };
-  home.file = {
-    ".local/share/rofi/themes" = { source = ./configs/rofitheme/themes; recursive = true;};
-  };
+  # home.file = {
+  #   ".local/share/rofi/themes" = { source = ./configs/rofitheme/themes; recursive = true;};
+  # };
 
 
   services.hypridle = {
@@ -232,6 +249,7 @@
 
 
   imports = [
+      inputs.stylix.homeModules.stylix
       ./modules/yazi.nix # filemanager
       inputs.nixvim.homeModules.nixvim
       inputs.sops-nix.homeManagerModules.sops
