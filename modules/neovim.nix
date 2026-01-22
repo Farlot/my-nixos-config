@@ -44,7 +44,31 @@
       settings.options.theme = "tokyonight";
     };
 
-    # 5. Fuzzy Finding (Telescope)
+    # 5. File Tree (Neo-tree)
+    plugins.neo-tree = {
+      enable = true;
+      settings = {
+      enableGitStatus = true;
+      enableRefreshOnWrite = true;
+      filesystem.followCurrentFile.enabled = true;
+      window.position = "left";
+      };
+    };
+    # 6. Git +/- signs changes
+    plugins.gitsigns = {
+      enable = true;
+      settings = {
+        signs = {
+          add.text = "+";
+          change.text = "~";
+          delete.text = "-";
+          topdelete.text = "‾";
+          changedelete.text = "~";
+               };
+      };
+    };
+
+    # 7. Fuzzy Finding (Telescope)
     plugins.telescope = {
       enable = true;
       keymaps = {
@@ -60,15 +84,18 @@
         action = "<cmd>Git<CR>";
         mode = "n";
         options = {
-          desc = "Git Status"; # Optional: Adds a description for tools like which-key
+          desc = "Git Status";
         };
       }
-      # ... other keymaps you might have ...
+      {
+        mode = "n";
+        key = "<leader>e";
+        action = "<cmd>Neotree toggle<CR>";
+        options.desc = "Toggle Explorer";
+      }
     ];
 
-    # 6. AI Agent (Ollama Integration)
-    # This setup uses 'gen.nvim', a popular Ollama plugin.
-    # Because it's an external plugin, we add it to extraPlugins.
+    # 8. AI Agent (Ollama Integration)
     extraPlugins = [ 
       pkgs.vimPlugins.gen-nvim
       pkgs.vimPlugins.vim-visual-multi
@@ -76,7 +103,7 @@
 
     extraConfigLua = ''
       require('gen').setup({
-        model = "deepseek-r1:latest", -- Matches your Ollama config
+        model = "deepseek-r1:latest",
         host = "localhost",
         port = "11434",
         display_mode = "float", -- float or split
@@ -84,11 +111,11 @@
         show_model = true,
       })
 
-      -- Simple keybind to open the AI menu
+      -- Keybind to open the AI menu
       vim.keymap.set({'n', 'v'}, '<leader>aa', ':Gen<CR>')
     '';
 
-    # 7. Key Globals
+    # 9. Key Globals
     globals.mapleader = " ";
   };
 }
