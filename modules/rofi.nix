@@ -1,12 +1,15 @@
 { config, pkgs, lib, ... }:
 
-{ programs.rofi = {
+
+{ 
+
+  stylix.targets.rofi.enable = false;
+  programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland;
+    package = pkgs.rofi;
     
-    # Fix rofi-calc for Wayland to avoid ABI mismatch
     plugins = [
-      (pkgs.rofi-calc.override { rofi-unwrapped = pkgs.rofi-wayland-unwrapped; })
+      pkgs.rofi-calc
     ];
 
     cycle = true;

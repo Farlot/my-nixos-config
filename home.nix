@@ -41,6 +41,11 @@
 
   stylix = {
     enable = true;
+    targets = {
+      qt.enable = true;
+      kde.enable = true;
+      gtk.enable = true;
+    };
     image = pkgs.fetchurl {
       url = "https://raw.githubusercontent.com/NixOS/nixos-artwork/master/wallpapers/nix-wallpaper-nineish-dark-gray.png";
       sha256 = "07zl1dlxqh9dav9pibnhr2x1llywwnyphmzcdqaby7dz5js184ly";
@@ -256,6 +261,7 @@
       ./modules/neovim.nix
       ./modules/scripts.nix
       ./modules/waybar.nix
+      ./modules/rofi.nix
       ./modules/kitty.nix
     ];
 
