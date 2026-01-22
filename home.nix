@@ -118,13 +118,37 @@
   };
 
 
+  sops = {
+  defaultSopsFile = ./secrets/secrets.yaml;
+  defaultSopsFormat = "yaml";
+  age.keyFile = "/home/maw/.config/sops/age/keys.txt"; # Matches your system config
+
+  secrets.git_name = {};
+  secrets.git_email = {};
+
+  # Create a file that looks like a git config
+  templates."git-config" = {
+    content = ''
+      [user]
+        name = ${config.sops.placeholder.git_name}
+        email = ${config.sops.placeholder.git_email}
+    '';
+  };
+  };
+
+
   programs.git = {
     enable = true;
+    includes = [
+        { path = config.sops.templates."git-config".path; }
+    ];
+
     settings = {
-      user.name = "Farlot";
-      user.email = "m.waaagan@gmail.com";
+      # user.name = "Farlot";
+      # user.email = "m.waaagan@gmail.com";
       safe.directory = [ "/mnt/stuff/nixos" ];
       url."git@github.com:".insteadOf = "https://github.com/";
+
     };
   };
 
@@ -209,9 +233,11 @@
   '';
 
 
+
   imports = [
       ./modules/yazi.nix # filemanager
       inputs.nixvim.homeModules.nixvim
+      inputs.sops-nix.homeManagerModules.sops
       ./modules/neovim.nix
       ./modules/scripts.nix
       ./modules/waybar.nix
