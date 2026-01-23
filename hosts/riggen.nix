@@ -3,46 +3,34 @@
 {
 
   networking.hostName = "riggen";
-  media_server.enable = false;
 
   imports =[
+    inputs.stable-diffusion-webui-nix.nixosModules.default
     ../modules/ollama.nix
-    ../modules/arr.nix
+    ../modules/backup.nix
     ../modules/wireguardvpn.nix
     ../modules/ddns.nix
-    ../modules/backup.nix
-    inputs.stable-diffusion-webui-nix.nixosModules.default
   ];
 
 
   # Packages
   nixpkgs.config.permittedInsecurePackages = ["dotnet-runtime-7.0.20"];
   environment.systemPackages = with pkgs; [
-    kdePackages.kate
-    goxlr-utility
-    ckb-next
-    coolercontrol.coolercontrold
-    #coolercontrol.coolercontrol-liqctld
-    #coolercontrol.coolercontrol-gui
-    protonup-ng
-    docker
-    docker-compose
-    runc
-    nvidia-container-toolkit
-    gh
-    prismlauncher
-    google-chrome
-    flatpak
-    umu-launcher
-    obs-studio
-    ydotool
-    rclone
-    rust-stakeholder
-    autorandr
-    stable-diffusion-webui.comfy.cuda
-    stable-diffusion-webui.forge.cuda
-    # Games
-    #vintagestory
+    goxlr-utility # audio
+    kdePackages.kate # text editor
+    ckb-next # keyboard
+    nvidia-container-toolkit # gpu
+    coolercontrol.coolercontrold # cooling
+    protonup-ng # gaming
+    docker # container
+    podman # container
+    docker-compose # container
+    runc # OCI container
+    gh # Git CLI integration?
+    ollama
+    rclone # cloud storage
+    stable-diffusion-webui.comfy.cuda # ai
+    stable-diffusion-webui.forge.cuda # ai
   ];
 
   services.dbus.enable = true;
@@ -51,6 +39,12 @@
     enable = true;
     };
 
+  # Hyprland
+  programs.hyprland = { enable = true; xwayland.enable = true;};
+  programs.hyprlock.enable = true;
+  programs.fuse.userAllowOther = true; # gcrypt integration
+
+  fonts.packages = with pkgs; [ nerd-fonts.jetbrains-mono ];
 
   # Noisetorch noisecancel stuff
   programs.noisetorch.enable = true;
@@ -112,7 +106,6 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users.maw = import ../home.nix;
-
   };
 
 

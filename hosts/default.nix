@@ -6,14 +6,6 @@
     ../hardware-configuration.nix
     ../modules/maintenance.nix
     ../modules/gameservers
-    #../modules/arr.nix
-    #./modules/gameservers/empyrion.nix
-    #./modules/gameservers/foundry.nix
-    #./modules/gameservers/avorion.nix
-    #./modules/gameservers/factorio.nix
-    #./modules/gameservers/abiotic.nix
-    #./modules/gameservers/icarus.nix
-    #./modules/gameservers/soulmask.nix
     inputs.home-manager.nixosModules.home-manager
     inputs.sops-nix.nixosModules.sops
   ];
@@ -26,9 +18,6 @@
   enable = true;
   device = "nodev"; # Or specify your device, e.g., "/dev/sda"
   efiSupport = true; # If you're using UEFI
-  #Optional configurations
-  #useOSProber = true; #To detect other OS's
-  #efiInstallAsRemovable = true; # Sometimes this helps with UEFI issues.
   };
   boot.loader.systemd-boot.enable = false;
 
@@ -37,21 +26,10 @@
   i18n.defaultLocale = "en_US.UTF-8";
   services.xserver.enable = true;
 
-  # KDE
-  #services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm = {
     enable = true;
     autoNumlock = true;
   };
-
-  # Hyprland
-  programs.hyprland = { enable = true; xwayland.enable = true;};
-  #programs.waybar = { enable = true;};
-  programs.hyprlock.enable = true;
-
-  programs.fuse.userAllowOther = true;
-
-  fonts.packages = with pkgs; [ nerd-fonts.jetbrains-mono ];
 
 
   services.xserver.xkb = {
@@ -69,18 +47,11 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
   # Shell
   programs.zsh.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.maw = {
     isNormalUser = true;
     description = "";
@@ -102,24 +73,7 @@
     };
 
   environment.systemPackages = [
-    pkgs.keepassxc
-    pkgs.fastfetch
-    pkgs.podman
-    pkgs.btop
-    pkgs.nh
     pkgs.sops
-    pkgs.firefox
-    stable-pkgs.gimp
-    pkgs.pavucontrol
-    # Hyprland rebuild
-    pkgs.hyprshot
-    pkgs.libnotify
-    pkgs.kdePackages.dolphin
-    pkgs.kitty
-    pkgs.hyprpaper
-    pkgs.calcurse
-    pkgs.kdePackages.gwenview
-    pkgs.kdePackages.ark
   ];
 
   # fetch secrets with :

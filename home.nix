@@ -1,21 +1,35 @@
 { config, pkgs, inputs, ... }:
 
 {
+  imports = [
+      inputs.stylix.homeModules.stylix
+      inputs.nixvim.homeModules.nixvim
+      inputs.sops-nix.homeManagerModules.sops
+      ./modules/yazi.nix # filemanager
+      ./modules/neovim.nix
+      ./modules/scripts.nix
+      ./modules/waybar.nix
+      ./modules/rofi.nix
+      ./modules/kitty.nix
+    ];
+  
+
   nixpkgs.config = {
     allowUnfree = true;
   };
 
+  
   home.username = "maw";
   home.homeDirectory = "/home/maw";
-
+  home.sessionVariables = {
+     # EDITOR = "kate";
+  };
 
   home.packages = with pkgs; [
     obsidian
     flameshot
     git
     teams-for-linux
-    wineWowPackages.stagingFull
-    winetricks
     spotify
     protontricks
     mangohud
@@ -23,19 +37,35 @@
     xivlauncher
     lutris
     qbittorrent
-    vlc
     tldr
     itch
     wowup-cf
     qdirstat
     appimage-run
     gocryptfs # encrypt vault
-    ollama
     ouch
     vesktop
-    webcord
-    #oterm # Broken AI terminnal tool ?
-    
+    prismlauncher # Minecraft Launcher
+    google-chrome # browser
+    flatpak # package
+    umu-launcher # game
+    obs-studio # streaming
+    ydotool # Autohotkey ish
+    rust-stakeholder # rust
+    autorandr # monitor
+    loupe # image
+    keepassxc # password
+    btop # process
+    nh # game
+    firefox # browser
+    gimp # image
+    pavucontrol # audio
+    hyprshot # screenshot
+    libnotify # notification
+    kitty # terminal
+    hyprpaper # wallpaper
+    calcurse # calendar
+    mpv # mediaplayer
   ];
 
 
@@ -68,33 +98,6 @@
       };
     };
   };
-
-  # qt = {
-  #   enable = true;
-  #   platformTheme.name = "gtk";
-  #   style.name = "adwaita-dark"; # Fallback style
-  # };
-
-  # # 2. Set a Dark GTK Theme (Prism Launcher will pick this up)
-  # gtk = {
-  #   enable = true;
-  #   theme = {
-  #     # Matches your Neovim/Rofi aesthetic
-  #     name = "Tokyonight-Dark"; 
-  #     package = pkgs.tokyonight-gtk-theme;
-  #   };
-  #   
-  #   # Optional: Match icons/cursor
-  #   iconTheme = {
-  #     name = "Papirus-Dark";
-  #     package = pkgs.papirus-icon-theme;
-  #   };
-  #   
-  #   cursorTheme = {
-  #     name = "Bibata-Modern-Ice";
-  #     package = pkgs.bibata-cursors;
-  #   };
-  # };
   
 
   programs.zoxide = { # terminal navigation tool
@@ -107,7 +110,6 @@
 
   programs.brave = {
     enable = true;
-    #package = pkgs.brave;
     extensions = [
       { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
       { id = "oboonakemofpalcgghocfoadofidjkkk"; } # KeePassXC
@@ -122,24 +124,9 @@
       #{ id = "ajopnjidmegmdimjlfnijceegpefgped"; } # BetterTTV
       ];
     commandLineArgs = [
-      #"--disable-features=WebRtcAllowInputVolumeAdjustment"
       "--disable-features=PasswordManagerOnboarding"
       "--disable-features=AutofillEnableAccountWalletStorage"
     ];
-  };
-
-  # Define default applications using xdg.mimeApps
-  xdg.mimeApps = {
-    enable = true; # Ensures the necessary services are active
-    defaultApplications = {
-      "inode/directory" = [ "yazi.desktop" ];
-      "image/jpeg" = [ "org.kde.gwenview.desktop" ];
-      "image/png" = [ "org.kde.gwenview.desktop" ];
-      "image/gif" = [ "org.kde.gwenview.desktop" ];
-      "image/bmp" = [ "org.kde.gwenview.desktop" ];
-      "image/webp" = [ "org.kde.gwenview.desktop" ];
-      "image/svg+xml" = [ "org.kde.gwenview.desktop" ];
-    };
   };
 
 
@@ -206,42 +193,6 @@
 
   xdg.configFile = {
     "hypr" = { source = ./configs/hypr; recursive = true; };
-    #"rofi" = { source = ./configs/rofi; recursive = true; };
-  };
-  # home.file = {
-  #   ".local/share/rofi/themes" = { source = ./configs/rofitheme/themes; recursive = true;};
-  # };
-
-
-  services.hypridle = {
-    enable = true;
-    settings = {
-      general = {
-        # Optional: command to run when locking (if you want to use your hyprlock config)
-        lock_cmd = "pidof hyprlock || hyprlock";
-        # Command to run before sleep (suspend)
-        before_sleep_cmd = "loginctl lock-session";
-        # Command to run after waking up
-        after_sleep_cmd = "hyprctl dispatch dpms on";
-        ignore_dbus_inhibit = true;
-      };
-
-      listener = [
-        # 30 Minutes (1800 seconds) - Turn off screen
-        {
-          timeout = 1800;
-          on-timeout = "hyprctl dispatch dpms off";
-          on-resume = "hyprctl dispatch dpms on";
-        }
-
-        # Optional: Lock screen after 30 mins (or slightly before/after)
-        # Since you already have hyprlock configured, you might want this:
-        {
-          timeout = 1750;
-          on-timeout = "loginctl lock-session";
-        }
-      ];
-    };
   };
 
 
@@ -251,24 +202,6 @@
     }
   '';
 
-
-
-  imports = [
-      inputs.stylix.homeModules.stylix
-      ./modules/yazi.nix # filemanager
-      inputs.nixvim.homeModules.nixvim
-      inputs.sops-nix.homeManagerModules.sops
-      ./modules/neovim.nix
-      ./modules/scripts.nix
-      ./modules/waybar.nix
-      ./modules/rofi.nix
-      ./modules/kitty.nix
-    ];
-
-
-  home.sessionVariables = {
-     # EDITOR = "kate";
-  };
 
   home.stateVersion = "24.05"; # Please read the comment before changing.
   # Let Home Manager install and manage itself.

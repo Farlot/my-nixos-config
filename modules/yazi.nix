@@ -1,41 +1,63 @@
 { pkgs, ... }:
 
 {
-  # 1. Yazi Configuration
   programs.yazi = {
     enable = true;
-    enableZshIntegration = true; # Change to enableBashIntegration if using Bash
+    enableZshIntegration = true;
+
+    keymap = {
+      manager.prepend_keymap = [
+        {
+          on = [ "g" "n" ]; 
+          run = "cd /home/maw/nixos";
+          desc = "Go to nix config";
+        }
+      ];
+    };
 
     settings = {
       manager = {
-        show_hidden = false;
+        show_hidden = true;
         sort_by = "natural";
         sort_dir_first = true;
         linemode = "none";
+        shell = "${pkgs.zsh}/bin/zsh";
       };
+
+      opener = {
+        edit = [  { run = ''nvim "$@"''; block = true; for = "unix"; desc = "Edit with Neovim"; } ];
+        view = [  { run = ''loupe "$@"''; orphan = true; for = "unix"; desc = "View Image"; } ];
+        play = [  { run = ''mpv "$@"''; orphan = true; for = "unix"; desc = "Play Video"; } ];
+      };
+
+      open = {
+        prepend_rules = [
+          { mime = "text/*"; use = [ "edit" ]; }
+          { mime = "image/*"; use = [ "view" ]; }
+          { mime = "video/*"; use = [ "play" ]; }
+          { name = "*.nix"; use = [ "edit" ]; }
+        ];
+      };
+
       preview = {
-        max_width = 1920;
-        max_height = 1080;
+        max_width = 2560;
+        max_height = 1440;
         image_filter = "lanczos3";
-        sixel_fraction = 10;
       };
     };
   };
 
-  # 2. Yazi-specific Dependencies
-  # We put them here instead of home.nix so they live and die with this file.
-  home.packages = with pkgs; [
-    # Archive tools for Yazi to use
-    p7zip
-    unrar
-    gnutar
+  home.sessionVariables = {
+    YAZI_LOG = "debug";
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+    SHELL = "${pkgs.zsh}/bin/zsh";
+    PATH = "$PATH:/run/current-system/sw/bin";
+  };
 
-    # Preview tools
-    ffmpegthumbnailer
-    poppler
-    imagemagick
-    fd
-    ripgrep
-    zoxide
+  home.packages = with pkgs; [
+    p7zip unrar gnutar
+    ffmpegthumbnailer poppler imagemagick ghostscript
+    fd ripgrep zoxide loupe mpv
   ];
 }
