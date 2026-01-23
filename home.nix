@@ -22,7 +22,7 @@
   home.username = "maw";
   home.homeDirectory = "/home/maw";
   home.sessionVariables = {
-     # EDITOR = "kate";
+     # EDITOR = "kitty -e nvim";
   };
 
   home.packages = with pkgs; [
