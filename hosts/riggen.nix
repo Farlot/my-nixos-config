@@ -17,7 +17,6 @@
   nixpkgs.config.permittedInsecurePackages = ["dotnet-runtime-7.0.20"];
   environment.systemPackages = with pkgs; [
     goxlr-utility # audio
-    kdePackages.kate # text editor
     ckb-next # keyboard
     nvidia-container-toolkit # gpu
     coolercontrol.coolercontrold # cooling
