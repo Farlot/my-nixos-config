@@ -5,12 +5,14 @@
       inputs.stylix.homeModules.stylix
       inputs.nixvim.homeModules.nixvim
       inputs.sops-nix.homeManagerModules.sops
+      ./modules/stylix.nix
       ./modules/yazi.nix # filemanager
       ./modules/neovim.nix
       ./modules/scripts.nix
       ./modules/waybar.nix
       ./modules/rofi.nix
       ./modules/kitty.nix
+      ./modules/hyprland.nix
     ];
   
 
@@ -46,7 +48,6 @@
     ouch
     vesktop
     prismlauncher # Minecraft Launcher
-    google-chrome # browser
     flatpak # package
     umu-launcher # game
     obs-studio # streaming
@@ -57,54 +58,20 @@
     keepassxc # password
     btop # process
     nh # game
-    firefox # browser
     gimp # image
     pavucontrol # audio
     hyprshot # screenshot
     libnotify # notification
     kitty # terminal
-    hyprpaper # wallpaper
     calcurse # calendar
     mpv # mediaplayer
   ];
-
-
-  stylix = {
-    enable = true;
-    targets = {
-      qt.enable = true;
-      kde.enable = true;
-      gtk.enable = true;
-    };
-    image = pkgs.fetchurl {
-      url = "https://raw.githubusercontent.com/NixOS/nixos-artwork/master/wallpapers/nix-wallpaper-nineish-dark-gray.png";
-      sha256 = "07zl1dlxqh9dav9pibnhr2x1llywwnyphmzcdqaby7dz5js184ly";
-    };
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
-    polarity = "dark";
-
-    fonts = {
-      monospace = {
-        package = pkgs.nerd-fonts.jetbrains-mono;
-        name = "JetBrainsMono Nerd Font Mono";
-      };
-      sansSerif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Sans";
-      };
-      serif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Serif";
-      };
-    };
-  };
   
 
   programs.zoxide = { # terminal navigation tool
     enable = true;
     enableZshIntegration = true;
   };
-
   programs.fzf.enable = true; # terminal navigation helper for zoxide
 
 
@@ -137,8 +104,6 @@
 
   secrets.git_name = {};
   secrets.git_email = {};
-
-  # Create a file that looks like a git config
   templates."git-config" = {
     content = ''
       [user]
@@ -174,7 +139,6 @@
     };
   };
 
-  # Bashfix for scripts
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -189,10 +153,6 @@
       plugins = [ "git" "sudo" "docker" ];
       theme = "robbyrussell"; # or "agnoster", "powerlevel10k", etc.
     };
-  };
-
-  xdg.configFile = {
-    "hypr" = { source = ./configs/hypr; recursive = true; };
   };
 
 
