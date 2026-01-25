@@ -37,12 +37,10 @@
         "[workspace 6 silent] teams-for-linux"
         "waybar"
         "swaync"
-        "hyprpaper"
         "hyprshot"
         "wl-clip-persist --clipboard regular"
         "clipse -listen"
         "xrandr --output DP-2 --primary" # Note: xrandr might not work well in pure Wayland, consider using wlr-randr or hyprctl
-        "hypridle"
       ];
 
       #############################
@@ -244,9 +242,19 @@
   services.hyprpaper = {
     enable = true;
     settings = {
-      preload = [ "/mnt/spin/onedark-wallpapers/os/od_nixos.png" ];
-      wallpaper = [ "DP-2,/mnt/spin/onedark-wallpapers/os/od_nixos.png" ];
       splash = false;
+      wallpaper = [
+        {
+          monitor = "DP-2";
+          path = "/home/maw/.config/wallpaper/od_nvim.png";
+          fit_mode = "cover";
+        }
+        {
+          monitor = "DP-1";
+          path = "/home/maw/.config/wallpaper/od_nvim.png";
+          fit_mode = "cover";
+        }
+      ];
     };
   };
 
@@ -290,7 +298,26 @@
     };
   };
 
+  services.hypridle = {
+    enable = true;
+    settings = {
+      general = {
+        # Avoid starting multiple instances
+        lock_cmd = "pidof hyprlock || hyprlock";
+        ignore_dbus_inhibit = true;
+        before_sleep_cmd = "loginctl lock-session";
+        after_sleep_cmd = "hyprctl dispatch dpms on";
+      };
 
+      listener = [
+        {
+          timeout = 300; # 5 minutes in seconds
+          on-timeout = "hyprctl dispatch dpms off";
+          on-resume = "hyprctl dispatch dpms on";
+        }
+      ];
+    };
+  };
 
 
 }

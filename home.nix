@@ -123,7 +123,6 @@
     settings = {
       safe.directory = [ "/mnt/stuff/nixos" ];
       url."git@github.com:".insteadOf = "https://github.com/";
-
     };
   };
 
