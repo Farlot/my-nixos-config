@@ -12,6 +12,7 @@
     ../modules/ddns.nix
     ../modules/gameservers
     ../modules/maintenance.nix
+    ../modules/tailscale.nix
   ];
 
 
