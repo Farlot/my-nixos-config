@@ -8,6 +8,7 @@
 
   imports =
     [
+      ./minecraft.nix
       #./empyrion.nix
       #./foundry.nix
       #./avorion.nix
