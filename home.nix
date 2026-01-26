@@ -9,10 +9,8 @@
       ./modules/yazi.nix # filemanager
       ./modules/neovim.nix
       ./modules/scripts.nix
-      ./modules/waybar.nix
-      ./modules/rofi.nix
       ./modules/kitty.nix
-      ./modules/hyprland.nix
+      ./modules/de/hyprland
     ];
   
 
@@ -24,7 +22,7 @@
   home.username = "maw";
   home.homeDirectory = "/home/maw";
   home.sessionVariables = {
-     # EDITOR = "kitty -e nvim";
+     EDITOR = "nvim";
   };
 
   home.packages = with pkgs; [

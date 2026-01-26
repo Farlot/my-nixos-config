@@ -1,11 +1,6 @@
 { config, pkgs, ... }:
-#publicKey = "veLqpZazR9j/Ol2G8TfrO32yEhc1i543MCN8rpy1FBA=";
-#privateKeyFile = config.sops.secrets.wgpriv.path;
-#address = [ "10.71.233.75/32" ];
-#dns = [ "10.64.0.1" ];
-#endpoint = "185.204.1.203:51820";
-
 {
+    sops.secrets.wgpriv = {};
     networking = {
     firewall.allowedUDPPorts = [ 51820 ];
     iproute2.rttablesExtraConfig = ''

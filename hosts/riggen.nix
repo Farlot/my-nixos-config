@@ -10,6 +10,8 @@
     ../modules/backup.nix
     ../modules/wireguardvpn.nix
     ../modules/ddns.nix
+    ../modules/gameservers
+    ../modules/maintenance.nix
   ];
 
 

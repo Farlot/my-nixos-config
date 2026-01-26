@@ -3,9 +3,8 @@
 {
   imports =
   [
+    ../modules/nh.nix
     ../hardware-configuration.nix
-    ../modules/maintenance.nix
-    ../modules/gameservers
     inputs.home-manager.nixosModules.home-manager
     inputs.sops-nix.nixosModules.sops
   ];
@@ -15,9 +14,9 @@
   networking.firewall.enable = true;
 
   boot.loader.grub = {
-  enable = true;
-  device = "nodev"; # Or specify your device, e.g., "/dev/sda"
-  efiSupport = true; # If you're using UEFI
+    enable = true;
+    device = "nodev";
+    efiSupport = true;
   };
   boot.loader.systemd-boot.enable = false;
 
@@ -57,8 +56,6 @@
     description = "";
     extraGroups = [ "networkmanager" "wheel" "docker" "vboxusers" "gamemode"];
     shell = pkgs.zsh;
-    packages = with pkgs; [
-    ];
   };
 
   # Allow non-free packages
@@ -81,9 +78,6 @@
   sops.defaultSopsFile = ../secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/maw/.config/sops/age/keys.txt";
-  sops.secrets.wgpub = {};
-  sops.secrets.wgpriv = {};
-  #sops.secrets."myservice/my_subdir/mysecret" = {};
 
   services.pcscd.enable = true;
   programs.gnupg.agent = {

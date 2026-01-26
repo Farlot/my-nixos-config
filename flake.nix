@@ -41,12 +41,10 @@
           inherit inputs system stable-pkgs;
           };
         modules = [
-          #./configuration.nix
-          ./modules/virt.nix
           sops-nix.nixosModules.sops
+          ./modules/virt.nix
           ./hosts
           ./hosts/riggen.nix
-          ./modules/nh.nix
           ./modules/hardware/mounts.nix
           {
             nixpkgs.overlays = [
