@@ -9,7 +9,7 @@
       layer = "top";
       position = "top";
       output = "DP-1"; # Matches your original config
-      modules-left = [ "hyprland/workspaces" "custom/mc" ];
+      modules-left = [ "hyprland/workspaces" "custom/mc" "custom/tomestone" ];
       modules-center = [ "clock" ];
       modules-right = [ "tray" "custom/ping" "cpu" "memory" "pulseaudio" ];
 
@@ -23,6 +23,14 @@
         tooltip-format = "󰃭 {:%A, %B %d, %Y | %H:%M:%S}";
         interval = 1;
         on-click = "kitty --hold calcurse";
+      };
+
+      "custom/tomestone" = {
+        format = "{}";
+        return-type = "json";
+        interval = 300;
+        exec = "tomestone-check";
+        on-click = "xdg-open https://tomestone.gg/character/39794582/tiny-kaoi/activity";
       };
 
       "custom/ping" = {
@@ -107,6 +115,22 @@
       #custom-mc { margin-right: 15px; }
       #custom-mc.good { color: #02a332; }
       #custom-mc.critical { color: #fc2d5e; }
+      #custom-tomestone {
+        padding: 0 10px;
+        color: #c0caf5; /* Default text color */
+      }
+
+      #custom-tomestone.cleared {
+        color: #9ece6a; /* Green for clears */
+      }
+
+      #custom-tomestone.wipe {
+        color: #f7768e; /* Red/Pink for wipes */
+      }
+
+      #custom-tomestone.error {
+        color: #ff9e64; /* Orange for errors */
+      }
     '';
   };
 }

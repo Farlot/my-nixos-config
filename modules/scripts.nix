@@ -142,5 +142,82 @@
         fi
         '';
         })
+    (pkgs.writers.writePython3Bin "tomestone-check" {
+      libraries = [ pkgs.python3Packages.requests ];
+      flakeIgnore = [ "E501" ];
+    } ''
+      import requests
+      import json
+      import sys
+      from datetime import datetime
+
+      # The API endpoint
+      URL = "https://tomestone.gg/character-contents/39794582/tiny-kaoi/activity?page=1"
+
+      HEADERS = {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+          'Accept': 'application/json'
+      }
+
+      try:
+          response = requests.get(URL, headers=HEADERS, timeout=15)
+          response.raise_for_status()
+          data = response.json()
+
+          # Traverse JSON
+          paginator = data.get('activities', {}).get('activities', {}).get('activities', {}).get('paginator', {})
+          activities = paginator.get('data', [])
+
+          if not activities:
+              print(json.dumps({"text": "No Activity", "tooltip": "No recent logs found", "class": "empty"}))
+              sys.exit(0)
+
+          # Get latest activity
+          latest = activities[0].get('activity', {})
+
+          # --- NAME PROCESSING ---
+          full_name = latest.get('contentLocalizedName', 'Unknown Activity')
+          short_name = full_name.replace("AAC Heavyweight", "").replace("(Savage)", "(S)").strip()
+
+          # --- TIME PROCESSING ---
+          # FIX: Use double quotes "" for default to avoid Nix escape issues
+          raw_time = latest.get('startTime', "")
+          time_str = ""
+
+          if raw_time:
+              try:
+                  # Parse string, ignore milliseconds, format as HH:MM
+                  dt = datetime.strptime(raw_time.split('.')[0], "%Y-%m-%d %H:%M:%S")
+                  time_str = dt.strftime("%H:%M")
+              except ValueError:
+                  time_str = ""
+
+          # --- STATUS PROCESSING ---
+          kills = latest.get('killsCount', 0)
+          is_kill = kills > 0
+
+          if is_kill:
+              status_text = "CLEARED"
+              metric = latest.get('killDuration', 'N/A')
+              css_class = "cleared"
+              icon = ""
+          else:
+              status_text = "WIPE"
+              metric = latest.get('bestPercent', 'N/A')
+              css_class = "wipe"
+              icon = ""
+
+          # --- OUTPUT ---
+          output = {
+              "text": f"{icon} {short_name} {metric} [{time_str}]",
+              "tooltip": f"<b>{full_name}</b>\nStatus: {status_text}\nResult: {metric}\nDate: {raw_time}",
+              "class": css_class
+          }
+
+          print(json.dumps(output))
+
+      except Exception as e:
+          print(json.dumps({"text": "Tomestone Err", "tooltip": str(e), "class": "error"}))
+      '')
   ];
 }
