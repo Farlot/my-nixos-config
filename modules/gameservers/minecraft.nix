@@ -15,7 +15,7 @@
   virtualisation.oci-containers.containers.minecraft-atmons = {
     image = "docker.io/itzg/minecraft-server:java21";
     autoStart = true;
-    ports = [ "25565:25565" ];
+    ports = [ "25565:25565/udp" "25565:25565/tcp" ];
     volumes = [ "/mnt/stuff/DockerStuff/minecraft-atmons:/data" ];
     
     # Point the container to the decrypted sops file

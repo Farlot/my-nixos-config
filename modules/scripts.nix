@@ -76,6 +76,7 @@
         stable-diffusion-webui --data-dir "/mnt/spin/vault/webuidata"
         '';
         })
+        # Ping waybar Script
         (pkgs.writeShellApplication {
         name = "waybar-ping";
         runtimeInputs = [ pkgs.iputils pkgs.bc pkgs.gnugrep pkgs.gawk ];
@@ -115,6 +116,31 @@
           printf '{"text": "%s", "tooltip": "Latency: %sms\\nLoss: %s%%", "class": "%s"}\n' "''${TEXT}" "''${AVG_LATENCY}" "''${LOSS}" "''${CLASS}"
         fi
         '';
-    })
+        })
+        # Minecraft Waybar script
+        (pkgs.writeShellApplication {
+        name = "waybar-mc";
+        runtimeInputs = [ pkgs.jq pkgs.mcstatus ];
+        text = ''
+        # Get status using the syntax that works for you
+        DATA=$(mcstatus localhost json 2>/dev/null || true)
+
+        # Check if we got data and if .online is true
+        IS_ONLINE=$(echo "$DATA" | jq -r '.online')
+
+        if [ "$IS_ONLINE" = "true" ]; then
+          # Extract counts from the nested .status.players object
+          ONLINE=$(echo "$DATA" | jq -r '.status.players.online')
+          MAX=$(echo "$DATA" | jq -r '.status.players.max')
+
+          # Handle the "sample" field being null when nobody is online
+          PLAYERS=$(echo "$DATA" | jq -r '.status.players.sample | if . == null then "No players online" else (map(.name) | join(", ")) end')
+
+          printf '{"text": "⛏ %s/%s", "tooltip": "%s", "class": "good"}\n' "$ONLINE" "$MAX" "$PLAYERS"
+        else
+          printf '{"text": "⛏ Offline", "tooltip": "Server unreachable", "class": "critical"}\n'
+        fi
+        '';
+        })
   ];
 }

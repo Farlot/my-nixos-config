@@ -5,6 +5,7 @@
   services.tailscale.enable = true;
 
   networking.firewall = {
+    allowedTCPPorts = [ 25565 ];
     allowedUDPPorts = [
       41641 # Default Tailscale
       42421 # Vintage Story

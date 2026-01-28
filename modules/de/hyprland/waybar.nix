@@ -9,7 +9,7 @@
       layer = "top";
       position = "top";
       output = "DP-1"; # Matches your original config
-      modules-left = [ "hyprland/workspaces" ];
+      modules-left = [ "hyprland/workspaces" "custom/mc" ];
       modules-center = [ "clock" ];
       modules-right = [ "tray" "custom/ping" "cpu" "memory" "pulseaudio" ];
 
@@ -33,6 +33,14 @@
         on-click = "kitty --hold ping 8.8.8.8";
       };
 
+      "custom/mc" = {
+        format = "{}";
+        return-type = "json";
+        exec = "waybar-mc"; # The script we created above
+        interval = 60;      # Check every 60 seconds
+        on-click = "kitty --hold mcstatus localhost:25565 status";
+      };
+
       "cpu" = {
         format = " {usage}%";
         on-click = "kitty --hold btop";
@@ -52,7 +60,7 @@
 
       "hyprland/workspaces" = {
         all-outputs = true;
-        disable-scroll = false;
+        disable-scroll = true;
       };
     }];
 
@@ -96,6 +104,9 @@
         border-radius: 4px;
         padding: 0 5px;
       }
+      #custom-mc { margin-right: 15px; }
+      #custom-mc.good { color: #02a332; }
+      #custom-mc.critical { color: #fc2d5e; }
     '';
   };
 }
